@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon.png" />
+  <title>Makgromart</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- JavaScript -->
+  <script defer src="js/main.js"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <img class="logo" src="assets/logo/logo.png" alt="Logo" />
+
+    <nav class="navbar">
+      <ul id="navbar">
+
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="#contact-preview">Contact</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#" id="close"><i class="fa-solid fa-xmark"></i></a></li>
+      </ul>
+    </nav>
+
+    <div class="header-icons">
+      <div class="cart-wrapper">
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+      <div id="mobile">
+        <i id="bar" class="fa-solid fa-outdent"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- CAROUSEL -->
+  <div class="slider">
+    <div class="list">
+
+      <div class="item">
+        <img src="./assets/images/hero-image-1.webp" alt="" loading="lazy">
+
+        <div class="content">
+          <div class="title">Welcome To</div>
+          <h1 class="type">Makgromart</h1>
+          <div class="description">
+            A shop for Agriculture and multidimensional services that meet human needs.
+          </div>
+          <div class="button">
+            <button>GET STARTED</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./assets/images/hero-image-2.webp" alt="" loading="lazy">
+
+        <div class="content">
+          <h1 class="title">Makgromart</h1>
+          <div class="type">VISION</div>
+          <div class="description">
+            To create a strategic and sustainable model that eases seller-buyer business relationships.
+          </div>
+          <div class="button">
+            <button>EXPLORE OUR SERVICES</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./assets/images/hero-image-4.webp" alt="" loading="lazy">
+
+        <div class="content">
+          <h1 class="title">Makgromart</h1>
+          <div class="type">MISSION</div>
+          <div class="description">
+            To bridge communication and accessibility gaps between sellers and buyers in a fast-growing volatile
+            economy.
+            <div class="button">
+              <button>CONTACT US</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="thumbnail">
+
+      <div class="item">
+        <img src="./assets/images/hero-image-1.webp" alt="" loading="lazy">
+      </div>
+      <div class="item">
+        <img src="./assets/images/hero-image-2.webp" alt="" loading="lazy">
+      </div>
+      <div class="item">
+        <img src="./assets/images/hero-image-4.webp" alt="" loading="lazy">
+      </div>
+
+    </div>
+
+
+    <div class="nextPrevArrows">
+      <button class="prev">
+        < </button>
+          <button class="next"> > </button>
+    </div>
+
+  </div>
+
+  <!-- Agriculture Products  -->
+  <section class="agric-product padding">
+    <div class="section-header">
+      <h2>AGRICULTURAL PRODUCTS</h2>
+      <a href="">See More</a>
+    </div>
+    <div class="card-container container">
+
+      <article class="card-article">
+        <img class="card-img" src="./assets/images/cereals2.png" alt="" loading="lazy">
+        <div class="card-shadow"></div>
+
+        <div class="card-data">
+          <h3 class="card-name">CEREALS</h3>
+
+        </div>
+        <div class="card-clip">
+          <img src="./assets/icons/menu-5-line.png" alt="menu icon" loading="lazy">
+        </div>
+
+        <div class="info">
+          <div class="info-data">
+            <h3 class="info-name">CEREALS</h3>
+            <div class="info-description">
+              <ul class="fa-list">
+                <li><i class="fas fa-circle"></i> Rice: Normal, Ofada.</li>
+                <li><i class="fas fa-circle"></i> Wheat.</li>
+                <li><i class="fas fa-circle"></i> Maize (Corn).</li>
+                <li><i class="fas fa-circle"></i> Millet.</li>
+              </ul>
+              <a href="#" class="see-more">See More</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-article">
+        <img class="card-img" src="./assets/images/spices.png" alt="" loading="lazy">
+        <div class="card-shadow"></div>
+
+        <div class="card-data">
+          <h3 class="card-name">SPICES</h3>
+
+        </div>
+        <div class="card-clip">
+          <img src="./assets/icons/menu-5-line.png" alt="menu icon" loading="lazy">
+        </div>
+        <div class="info">
+          <div class="info-data">
+            <h3 class="info-name">SPICES</h3>
+            <div class="info-description">
+              <ul class="fa-list">
+                <li><i class="fas fa-circle"></i> Dry pepper. </li>
+                <li><i class="fas fa-circle"></i> Ginger (Rhizome/Powder) </li>
+                <li><i class="fas fa-circle"></i> Garlic (Bulb/Powder) </li>
+                <li><i class="fas fa-circle"></i> Curry/thyme </li>
+              </ul>
+
+              <a href="#" class="see-more">See More</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-article">
+        <img class="card-img" src="./assets/images/tuber.jpg" alt="" loading="lazy">
+        <div class="card-shadow"></div>
+
+        <div class="card-data">
+          <h3 class="card-name">TUBERS</h3>
+          <!-- <span class="card-profession"></span> -->
+        </div>
+        <div class="card-clip">
+          <img src="./assets/icons/menu-5-line.png" alt="menu icon" loading="lazy">
+        </div>
+
+        <div class="info">
+          <div class="info-data">
+            <h3 class="info-name">TUBERS</h3>
+            <div class="info-description">
+              <ul class="fa-list">
+                <li><i class="fas fa-circle"></i> Yams. </li>
+                <li><i class="fas fa-circle"></i> Cassava. </li>
+                <li><i class="fas fa-circle"></i> Cocoyam. </li>
+                <li><i class="fas fa-circle"></i> Sweet Potatoes. </li>
+              </ul>
+              <a href="#" class="see-more">See More</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-article">
+        <img class="card-img" src="./assets/images/feeds2.png" alt="" loading="lazy">
+        <div class="card-shadow"></div>
+
+        <div class="card-data">
+          <h3 class="card-name">FEEDS</h3>
+          <!-- <span class="card-profession"></span> -->
+        </div>
+        <div class="card-clip">
+          <img src="./assets/icons/menu-5-line.png" alt="menu icon" loading="lazy">
+        </div>
+
+        <div class="info">
+          <div class="info-data">
+            <h3 class="info-name">FEEDS</h3>
+            <div class="info-description">
+              <ul class="fa-list">
+                <li><i class="fas fa-circle"></i> Poultry feeds </li>
+                <li><i class="fas fa-circle"></i> Fish feeds </li>
+                <li><i class="fas fa-circle"></i> Rabbit feeds </li>
+                <li><i class="fas fa-circle"></i> Goat feeds </li>
+              </ul>
+              <a href="#" class="see-more">See More</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-article">
+        <img class="card-img" src="./assets/images/flour.jpg" alt="" loading="lazy">
+        <div class="card-shadow"></div>
+
+        <div class="card-data">
+          <h3 class="card-name">FLOUR</h3>
+          <!-- <span class="card-profession"></span> -->
+        </div>
+        <div class="card-clip">
+          <img src="./assets/icons/menu-5-line.png" alt="menu icon" loading="lazy">
+        </div>
+
+        <div class="info">
+          <div class="info-data">
+            <h3 class="info-name">FLOUR</h3>
+            <div class="info-description">
+              <ul class="fa-list">
+                <li><i class="fas fa-circle"></i> Plantain flour </li>
+                <li><i class="fas fa-circle"></i> Wheat flour </li>
+                <li><i class="fas fa-circle"></i> Garri </li>
+                <li><i class="fas fa-circle"></i> Yam flour </li>
+              </ul>
+              <a href="#" class="see-more">See More</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-article">
+        <img class="card-img" src="./assets/images/oil.png" alt="" loading="lazy">
+        <div class="card-shadow"></div>
+
+        <div class="card-data">
+          <h3 class="card-name">OIL</h3>
+          <!-- <span class="card-profession"></span> -->
+        </div>
+        <div class="card-clip">
+          <img src="./assets/icons/menu-5-line.png" alt="menu icon" loading="lazy">
+        </div>
+
+        <div class="info">
+          <div class="info-data">
+            <h3 class="info-name">OIL</h3>
+            <div class="info-description">
+              <ul class="fa-list">
+                <li><i class="fas fa-circle"></i> Palm oil </li>
+                <li><i class="fas fa-circle"></i> Groundnut oil </li>
+                <li><i class="fas fa-circle"></i> Soya oil </li>
+                <li><i class="fas fa-circle"></i> Coconut oil </li>
+              </ul>
+              <a href="#" class="see-more">See More</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Other services -->
+  <section class="padding">
+    <div class="section-header">
+      <h2>Other Services</h2>
+      <a href="">See More</a>
+    </div>
+
+    <div class="service-container-cards service-grid">
+
+      <div class="service-card">
+        <div class="img-box img1">
+          <!-- <img src="./assets/images/ornamental.png" alt=""> -->
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">ORNAMENTAL SERVICES</h3>
+          <P class="card-text">
+            Makgromart provides ornamental services such as: sales, cultivation, delivery of wide range of beautiful
+            flowers and beautification of your landscapes, homes, estates, offices and gardens.
+            Kindly click of the link for further enquiries.
+          </P>
+
+          <a href="#" class="see-more1">See More</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="img-box img2">
+          <!-- <img src="./assets/images/construction.png" alt=""> -->
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-heading">CONSTRUCTION SERVICES</h3>
+          <P class="card-text">
+            Makgromart provides services such as: construction of animal pens, hutches and poultry cages of
+            different types, storage structures (Barns, Silos), Irrigation facilities, Fish ponds etc.
+          </P>
+
+          <a href="#" class="see-more1">See More</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="img-box img3">
+          <!-- <img src="./assets/images/consultation.png" alt=""> -->
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading"> CONSULTANCY SERVICES </h3>
+          <P class="card-text">
+            Makgromart provides professional and functional expertise advice on any of our services.
+          </P>
+
+          <a href="#" class="see-more1">See More</a>
+        </div>
+
+      </div>
+
+      <div class="service-card">
+        <div class="img-box img4">
+          <!-- <img src="./assets/images/digital.jpg" alt=""> -->
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">DIGITAL SERVICES</h3>
+          <p class="card-text">
+            Makgromart specializes in the sales of Digital equipment such as:
+          <ul class="fa-list">
+            <li><i class="fas fa-circle"></i> <strong>NEW and UK-USED Clean Laptops:</strong> HP, DELL, APPLE, LENOVO,
+              ACER.</li>
+            <ul class="fa-list">
+              <li><i class="fas fa-circle"></i> <strong>Cameras:</strong> Mark, Blackmagic, Nikon, Red, Panasonic,
+                Sony, Canon</li>
+              <li><i class="fas fa-circle"></i> Lenses</li>
+            </ul>
+            </li>
+          </ul>
+          <a href="#" class="see-more1">See More</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <hr>
+  <section class="contactUs-section">
+    <p>To make more enquiries, please send us a mail</p>
+  </section>
+
+
+</body>
+
+</html>
