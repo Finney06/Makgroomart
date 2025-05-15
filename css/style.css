@@ -817,11 +817,11 @@ nav li a {
     align-items: center;
     padding: 15px 30px;
     font-size: 16px;
-    color: var(--white);
+    color: var(--green);
     gap: 10px;
     border: none;
     border-radius: 5rem;
-    background-color: var(--light-green);
+    background-color: var(--white);
     cursor: pointer;
     font-family: "poppins", sans-serif;
     transition: 0.4s;
