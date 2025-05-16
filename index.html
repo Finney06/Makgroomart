@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
 
   <!-- JavaScript -->
   <script defer src="js/main.js"></script>
@@ -118,8 +118,8 @@
 
     <div class="nextPrevArrows">
       <button class="prev">
-        < </button>
-          <button class="next"> > </button>
+        < </button> <button class="next"> >
+          </button>
     </div>
 
   </div>
@@ -355,18 +355,13 @@
         <div class="img-box img4">
         </div>
         <div class="card-content">
-          <h3 class="card-heading">DIGITAL SERVICES</h3>
+          <h3 class="card-heading">FARM MANAGEMENT SERVICES</h3>
           <p class="card-text">
-            Makgromart specializes in the sales of Digital equipment such as:
+            Makgromart specialize in Farm set-up, layout, and management services in the following areas:
           <ul class="fa-list">
-            <li><i class="fas fa-circle"></i> <strong>NEW and UK-USED Clean Laptops:</strong> HP, DELL, APPLE, LENOVO,
-              ACER.</li>
-            <ul class="fa-list">
-              <li><i class="fas fa-circle"></i> <strong>Cameras:</strong> Mark, Blackmagic, Nikon, Red, Panasonic,
-                Sony, Canon</li>
-              <li><i class="fas fa-circle"></i> Lenses</li>
-            </ul>
-            </li>
+            <li><i class="fas fa-circle"></i>Soil Test, analysis, Fertilization and Amendment.</li>
+            <li><i class="fas fa-circle"></i>Weed Management, Pest Management, Soilless Farming, Orgainic farming.</li>
+            <li><i class="fas fa-circle"></i> Aquaculture, Apiculture (Bee Farming), Snailery, Oil Seed Crops. </li>
           </ul>
           <a href="#" class="see-more1">See More</a>
           </p>
@@ -379,27 +374,78 @@
 
   <!-- Contact Us Section -->
   <section class="contactUs-section padding">
-          <div class="contact-left-title">
-        <h2>Get in touch</h2>
-        <hr>
-        <p>To make more enquiries, please send us a mail</p>
+    <div class="contact-left-title">
+      <h2>Get in touch</h2>
+      <hr>
+      <p>To make more enquiries, please send us a mail</p>
+    </div>
+    <div class="contact-container">
+      <form action="https://formsubmit.co/8d5de388146aacdfc35fe7fce3191ca4" method="POST" class="contact-left">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+        <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+        <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
+        <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+        <button type="submit">SEND <i class="fa-solid fa-arrow-right-long"></i></button>
+      </form>
+      <div class="contact-right">
+        <img src="./assets/images/contact-Us.jpg" alt="">
       </div>
-<div class="contact-container">
-    <form action="https://formsubmit.co/8d5de388146aacdfc35fe7fce3191ca4" method="POST" class="contact-left">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
-      <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
-      <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
-      <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
-      <button type="submit">SEND <i class="fa-solid fa-arrow-right-long"></i></button>
-    </form>
-    <div class="contact-right">
-      <img src="./assets/images/contact-Us.jpg" alt="">
-    </div> 
-</div>   
+    </div>
   </section>
 
+  <!-- Footer Section -->
+  <footer>
+    <div class="row">
+      <div class="col">
+        <img src="./assets/logo/logo4.jpg" class="footer-logo" alt="">
+        <p>A place for agricultural multidimensional service that meets human needs</p>
+      </div>
+      <div class="col">
+        <h3>SUPPORT <div class="underline"><span></span></div>
+        </h3>
+        <P>Contact Us</P>
+        <p>About Us</p>
+        <p>T&C's</p>
+      </div>
+      <div class="col">
+        <h3>INFORMATION <div class="underline"><span></span></div>
+        </h3>
+        <p>Help and FAQ's</p>
+        <p>Location</p>
+        <p>Credits</p>
+      </div>
+      <div class="col">
+        <h3>Newsletter <div class="underline"><span></span></div>
+        </h3>
+        <form class="news">
+          <i class="far fa-envelope"></i>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit"><i class="fa-solid fa-arrow-right-long fast"></i></button>
+        </form>
+        <div class="mail contacts">
+          <i class="fa-solid fa-at icon"></i>
+          <a class="footer-link" href="mailto:makgromart01@gmail.com">makgromart01@gmail.com</a>
+        </div>
+        <div class="phone contacts">
+          <i class="fa-solid fa-phone-volume icon"></i>
+          <a class="footer-link" href="tel:+23902565689">+2349025656789</a>
+        </div>
+        <div class="time contacts">
+          <i class="fa-solid fa-clock icon"></i>
+          <p>7:00am - 20:00pm</p>
+        </div>
 
+        <div class="socials contacts">
+          <i class="fa-brands fa-facebook fab"></i>
+          <i class="fa-brands fa-instagram fab"></i>
+          <i class="fa-brands fa-whatsapp fab"></i>
+        </div>
+      </div>
+    </div>
+    <hr class="hr1">
+    <p class="copyright">© Makromart 2025 – All Rights Reserved.</p>
+  </footer>
 </body>
 
 </html>
