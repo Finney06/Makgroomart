@@ -925,8 +925,6 @@ footer {
 
 .socials {
   margin-top: 25px;
-  /* display: flex;
-    justify-content: center; */
 }
 
 .socials .fab {
@@ -934,6 +932,11 @@ footer {
   color: var(--white);
   margin-right: 15px;
   cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.socials .fab:hover {
+  color: var(--light-green);
 }
 
 .hr1 {
