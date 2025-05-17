@@ -791,11 +791,13 @@ nav li a {
 .contact-inputs {
   width: 400px;
   height: 50px;
-  border: none;
+   border: 2px solid transparent;
   padding-left: 2.5rem;
   font-weight: 500;
   color: var(--grey);
   border-radius: 5rem;
+  transition: border 0.3s ease;
+  outline: none;
 }
 
 .contact-left textarea {
@@ -804,8 +806,10 @@ nav li a {
   border-radius: 20px;
 }
 
-.contact-inputs:hover {
-  border: 2px solid var(--green);
+.contact-inputs:hover,
+.contact-inputs:focus {
+  border: 2px solid var(--light-green);
+  box-shadow: 0 0 8px rgba(0, 128, 0, 0.2); /* Optional subtle glow effect */
 }
 
 .contact-inputs::placeholder {
