@@ -380,14 +380,29 @@
     </div>
     <div class="contact-container">
       <form action="https://formsubmit.co/83a0bbab4aa1a0f19300275d59141898" method="POST" class="contact-left">
+        <!-- Disable CAPTCHA -->
         <input type="hidden" name="_captcha" value="false">
+
+        <!-- Spam filter -->
         <input type="text" name="_honey" style="display:none">
+
+        <!-- Redirect after submission -->
         <input type="hidden" name="_next" value="https://finney06.github.io/Makgroomart/thanks.html">
+
+        <!-- Custom email subject -->
+        <input type="hidden" name="_subject" value="New Message from Makgroomart Contact Form">
+
+        <!-- Custom email message format -->
+        <input type="hidden" name="_template" value="table">
+
+        <!-- Visible input fields -->
         <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
         <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
         <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+
         <button type="submit">SEND <i class="fa-solid fa-arrow-right-long"></i></button>
       </form>
+
       <div class="contact-right">
         <img src="./assets/images/contact-Us.jpg" alt="">
       </div>
