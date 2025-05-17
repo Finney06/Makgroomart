@@ -418,11 +418,22 @@
       <div class="col">
         <h3>Newsletter <div class="underline"><span></span></div>
         </h3>
-        <form class="news">
+        <form action="https://formsubmit.co/83a0bbab4aa1a0f19300275d59141898" method="POST" class="news">
           <i class="far fa-envelope"></i>
-          <input type="email" placeholder="Enter your email" required>
-          <button type="submit"><i class="fa-solid fa-arrow-right-long fast"></i></button>
+
+          <input type="email" name="email" placeholder="Enter your email" required>
+
+          <!-- Optional hidden fields -->
+          <input type="hidden" name="_subject" value="New Newsletter Subscription!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_honey" style="display:none">
+          <input type="hidden" name="_next" value="https://finney06.github.io/Makgroomart/thanks.html">
+
+          <button type="submit">
+            <i class="fa-solid fa-arrow-right-long fast"></i>
+          </button>
         </form>
+
         <div class="mail contacts">
           <i class="fa-solid fa-at icon"></i>
           <a class="footer-link" href="mailto:makgromart01@gmail.com">makgromart01@gmail.com</a>
@@ -440,7 +451,8 @@
           <a href="https://www.facebook.com/share/198hbivwXu/" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-facebook fab"></i>
           </a>
-          <a href="https://www.instagram.com/makgro.mart?igsh=MWIwaHptaDdhOXplcg==" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/makgro.mart?igsh=MWIwaHptaDdhOXplcg==" target="_blank"
+            rel="noopener noreferrer">
             <i class="fa-brands fa-instagram fab"></i>
           </a>
           <a href="https://wa.me/2348125844055" target="_blank" rel="noopener noreferrer">
