@@ -180,6 +180,22 @@ header {
   cursor: pointer;
 } */
 
+/* ✨ Animate filter icon */
+#filterToggle .fa-filter {
+  transition: transform 0.4s ease;
+}
+
+#filterToggle.active .fa-filter {
+  transform: rotate(90deg);
+}
+
+/* 🌚 Dim background when filter dropdown is active */
+#pageOverlay.dimmed {
+  filter: brightness(0.4);
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
+
 
 
 @media screen and (max-width: 650px) {
@@ -191,5 +207,14 @@ header {
 @media screen and (max-width: 450px) {
     .main {
         height: 22vh;
+    }
+
+    .filter-grid h3 {
+        font-size: 18px;
+    }
+
+    .category-list {
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: .5rem;
     }
 }
