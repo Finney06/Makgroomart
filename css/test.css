@@ -1,0 +1,58 @@
+/* 🔽 Filter Overlay Animation */
+.filter-overlay {
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+  padding: 2rem;
+  transform: translateY(-10%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter-overlay.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ❌ Close Button */
+.close-filter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #444;
+}
+
+/* Filter grid and buttons */
+.filter-grid h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.filter-btn {
+  padding: 10px;
+  background-color: #00704a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: #005e3a;
+}
