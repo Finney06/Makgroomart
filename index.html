@@ -15,6 +15,35 @@
 
   <!-- JavaScript -->
   <script defer src="js/main.js"></script>
+
+  <style>
+    /* SCROLL UP BUTTON */
+
+    .scroll-to-top-button {
+      position: fixed;
+      bottom: 20px;
+      right: 35px;
+      background-color: #14ff72cb;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      text-decoration: none;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+    }
+
+    .scroll-to-top-button i {
+      transform: translateY(1px);
+    }
+
+    .scroll-to-top-button.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
@@ -27,7 +56,7 @@
       <ul id="navbar">
 
         <li><a class="active" href="#home">Home</a></li>
-        <li><a href="product.html">Product</a></li>
+        <li><a href="Product.html">Product</a></li>
         <li><a href="service.html">Service</a></li>
         <li><a href="#contact-preview">Contact</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -270,7 +299,7 @@
       </article>
 
       <article class="card-article">
-         <img class="card-img" src="./assets/images/Farm-machinery.jpg">
+        <img class="card-img" src="./assets/images/Farm-machinery.jpg">
         <div class="card-shadow"></div>
 
         <div class="card-data">
@@ -481,6 +510,31 @@
     <hr class="hr1">
     <p class="copyright">© Makromart 2025 – All Rights Reserved.</p>
   </footer>
+
+  <!-- SCROLL UP BUTTON -->
+  <a href="#" id="scrollToTopButton" class="scroll-to-top-button">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    window.addEventListener('scroll', function () {
+      var scrollToTopButton = document.getElementById('scrollToTopButton');
+      if (window.pageYOffset > 200) {
+        scrollToTopButton.classList.add('show');
+      } else {
+        scrollToTopButton.classList.remove('show');
+      }
+    });
+
+    document.getElementById('scrollToTopButton').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
 </body>
 
 </html>

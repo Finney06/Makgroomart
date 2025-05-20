@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon.png" />
+    <title>Product Page</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script defer src="js/main.js"></script>
+    <script defer src="js/product.js"></script>
+
+      <style>
+    /* SCROLL UP BUTTON */
+
+    .scroll-to-top-button {
+      position: fixed;
+      bottom: 20px;
+      right: 35px;
+      background-color: #14ff72cb;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      text-decoration: none;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+    }
+
+    .scroll-to-top-button i {
+      transform: translateY(1px);
+    }
+
+    .scroll-to-top-button.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <img class="logo" src="assets/logo/logo.png" alt="Logo" />
+
+        <nav class="navbar">
+            <ul id="navbar">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="product.html">Product</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="#contact-preview">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#" id="close"><i class="fa-solid fa-xmark"></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <div class="cart-wrapper">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div id="mobile">
+                <i id="bar" class="fa-solid fa-outdent"></i>
+            </div>
+        </div>
+    </header>
+
+<section class="product-controls">
+  <input type="text" id="productSearch" placeholder="Search products..." />
+
+  <button id="filterToggle">
+    <i class="fas fa-filter"></i> Filter
+  </button>
+</section>
+
+<!-- Filter Chips -->
+<div id="activeFilters" class="filter-chips"></div>
+
+<!-- Filter Dropdown Overlay -->
+<div id="filterOverlay" class="filter-overlay">
+  <div class="filter-grid">
+    <h3>Filter by Category</h3>
+    <div class="category-list">
+      <!-- buttons remain unchanged -->
+      <button class="filter-btn" data-category="Cereals">Cereals</button>
+      <button class="filter-btn" data-category="Legumes">Legumes</button>
+      <button class="filter-btn" data-category="Tubers">Tubers</button>
+      <button class="filter-btn" data-category="Flour">Flour</button>
+      <button class="filter-btn" data-category="Oil">Oil</button>
+      <button class="filter-btn" data-category="Spices">Spices</button>
+      <button class="filter-btn" data-category="Animal Farm">Animal Farm</button>
+      <button class="filter-btn" data-category="Planting Materials">Planting Materials</button>
+      <button class="filter-btn" data-category="Special Products">Special Products</button>
+      <button class="filter-btn" data-category="Grasses">Grasses</button>
+      <button class="filter-btn" data-category="Feeds">Feeds</button>
+      <button class="filter-btn" data-category="Fertilizers">Fertilizers</button>
+      <button class="filter-btn" data-category="Chemicals">Chemicals</button>
+    </div>
+  </div>
+</div>
+
+
+    <section class="main">
+        <div class="outer">
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/feeds2.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/cereals2.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/farm-animals.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/Legumes.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/special-crops.jpeg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/hero-image-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/hero-image-2.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/hero-image-4.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/management.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/construction.jpg" alt="">
+                </div>
+            </div>
+            <div class="inner">
+                <div class="slide">
+                    <img src="./assets/images/feeds2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- SCROLL UP BUTTON -->
+  <a href="#" id="scrollToTopButton" class="scroll-to-top-button">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    window.addEventListener('scroll', function () {
+      var scrollToTopButton = document.getElementById('scrollToTopButton');
+      if (window.pageYOffset > 200) {
+        scrollToTopButton.classList.add('show');
+      } else {
+        scrollToTopButton.classList.remove('show');
+      }
+    });
+
+    document.getElementById('scrollToTopButton').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
