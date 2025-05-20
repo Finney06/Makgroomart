@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isActive || forceClose) {
       filterOverlay.classList.remove("active");
       filterToggle.classList.remove("active");
-      pageOverlay.classList.remove("dimmed");
+      pageOverlay.classList.remove("blurred");
     } else {
       filterOverlay.classList.add("active");
       filterToggle.classList.add("active");
-      pageOverlay.classList.add("dimmed");
+      pageOverlay.classList.add("blurred");
     }
   }
 
