@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chipContainer = document.getElementById("activeFilters");
   const filterButtons = document.querySelectorAll(".filter-btn");
   const clearAllBtn = document.getElementById("clearAllFilters");
+  const filterCountBadge = document.getElementById("filterCountBadge"); 
 
   const activeFilters = new Set(); // To track selected categories
 
@@ -35,9 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!activeFilters.has(key)) {
         activeFilters.add(key);
         createChip(category, key);
+        updateFilterCount();
       }
-
-      // Don't close dropdown now (can be added later)
     });
   });
 
@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chip.querySelector(".remove-chip").addEventListener("click", () => {
       chip.remove();
       activeFilters.delete(key);
+      updateFilterCount();
     });
   }
 
@@ -64,5 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const chips = chipContainer.querySelectorAll(".chip");
     chips.forEach(chip => chip.remove());
     activeFilters.clear();
+    updateFilterCount(); 
   });
+
+    // 🔢 Update badge count
+  function updateFilterCount() {
+    const count = activeFilters.size;
+
+    if (count > 0) {
+      filterCountBadge.textContent = count;
+      filterCountBadge.classList.add("show");
+    } else {
+      filterCountBadge.classList.remove("show");
+    }
+  }
 });
