@@ -2,26 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon.png" />
-    <title>Product Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon.png" />
+  <title>Product Page</title>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/product.css" />
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/product.css" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
 
-    <!-- JavaScript -->
-    <script defer src="js/main.js"></script>
-    <script defer src="js/product.js"></script>
+  <!-- JavaScript -->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/product.js"></script>
 
-      <style>
+  <style>
     /* SCROLL UP BUTTON */
 
     .scroll-to-top-button {
@@ -52,133 +52,136 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <header>
-        <img class="logo" src="assets/logo/logo.png" alt="Logo" />
+  <!-- Navbar -->
+  <header>
+    <img class="logo" src="assets/logo/logo.png" alt="Logo" />
 
-        <nav class="navbar">
-            <ul id="navbar">
+    <nav class="navbar">
+      <ul id="navbar">
 
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="product.html">Product</a></li>
-                <li><a href="service.html">Service</a></li>
-                <li><a href="#contact-preview">Contact</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#" id="close"><i class="fa-solid fa-xmark"></i></a></li>
-            </ul>
-        </nav>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="product.html">Product</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="#contact-preview">Contact</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#" id="close"><i class="fa-solid fa-xmark"></i></a></li>
+      </ul>
+    </nav>
 
-        <div class="header-icons">
-            <div class="cart-wrapper">
-                <a href="cart.html" class="cart-link">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-            <div id="mobile">
-                <i id="bar" class="fa-solid fa-outdent"></i>
-            </div>
-        </div>
-    </header>
+    <div class="header-icons">
+      <div class="cart-wrapper">
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+      <div id="mobile">
+        <i id="bar" class="fa-solid fa-outdent"></i>
+      </div>
+    </div>
+  </header>
 
-<section class="product-controls">
-  <input type="text" id="productSearch" placeholder="Search products..." />
+  <section class="product-controls">
+    <input type="text" id="productSearch" placeholder="Search products..." />
 
-  <button id="filterToggle">
-    <i class="fas fa-filter"></i> Filter
-  </button>
-</section>
+    <button id="filterToggle">
+      <i class="fas fa-filter"></i> Filter
+    </button>
+  </section>
 
-<!-- Filter Chips -->
-<div id="activeFilters" class="filter-chips"></div>
+  <!-- Animated Filter Dropdown -->
+  <div id="filterOverlay" class="filter-overlay">
+    <button id="closeFilterOverlay" class="close-filter"> <img src="./assets/icons/x-icon.jpg" alt=""> </button>
 
-<!-- Animated Filter Dropdown -->
-<div id="filterOverlay" class="filter-overlay">
-  <button id="closeFilterOverlay" class="close-filter"> <img src="./assets/icons/x-icon.jpg" alt=""> </button>
+    <div class="filter-grid">
+      <h3>Filter by Category</h3>
 
-  <div class="filter-grid">
-    <h3>Filter by Category</h3>
-    <div class="category-list">
-      <button class="filter-btn">Cereals</button>
-      <button class="filter-btn">Legumes</button>
-      <button class="filter-btn">Tubers</button>
-      <button class="filter-btn">Flour</button>
-      <button class="filter-btn">Oil</button>
-      <button class="filter-btn">Spices</button>
-      <button class="filter-btn">Animal Farm</button>
-      <button class="filter-btn">Planting Materials</button>
-      <button class="filter-btn">Special Products</button>
-      <button class="filter-btn">Grasses</button>
-      <button class="filter-btn">Feeds</button>
-      <button class="filter-btn">Fertilizers</button>
-      <button class="filter-btn">Chemicals</button>
+      <div id="activeFilters" class="filter-chips">
+        <!-- Chips will be inserted here dynamically -->
+        <button id="clearAllFilters" class="clear-all-btn">Clear All</button>
+      </div>
+
+      <div class="category-list">
+        <button class="filter-btn">Cereals</button>
+        <button class="filter-btn">Legumes</button>
+        <button class="filter-btn">Tubers</button>
+        <button class="filter-btn">Flour</button>
+        <button class="filter-btn">Oil</button>
+        <button class="filter-btn">Spices</button>
+        <button class="filter-btn">Grasses</button>
+        <button class="filter-btn">Feeds</button>
+        <button class="filter-btn">Fertilizers</button>
+        <button class="filter-btn">Chemicals</button>
+        <button class="filter-btn">Animal Farm</button>
+        <button class="filter-btn">Planting Materials</button>
+        <button class="filter-btn">Special Products</button>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="pageOverlay">
-        <section class="main">
-        <div class="outer">
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/feeds2.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/cereals2.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/farm-animals.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/Legumes.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/special-crops.jpeg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/hero-image-1.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/hero-image-2.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/hero-image-4.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/management.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/construction.jpg" alt="">
-                </div>
-            </div>
-            <div class="inner">
-                <div class="slide">
-                    <img src="./assets/images/feeds2.jpg" alt="">
-                </div>
-            </div>
+  <div id="pageOverlay">
+    <section class="main">
+      <div class="outer">
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/feeds2.jpg" alt="">
+          </div>
         </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/cereals2.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/farm-animals.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/Legumes.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/special-crops.jpeg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/hero-image-1.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/hero-image-2.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/hero-image-4.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/management.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/construction.jpg" alt="">
+          </div>
+        </div>
+        <div class="inner">
+          <div class="slide">
+            <img src="./assets/images/feeds2.jpg" alt="">
+          </div>
+        </div>
+      </div>
     </section>
-</div>
+  </div>
 
-      <!-- SCROLL UP BUTTON -->
+  <!-- SCROLL UP BUTTON -->
   <a href="#" id="scrollToTopButton" class="scroll-to-top-button">
     <i class="fas fa-arrow-up"></i>
   </a>
@@ -202,4 +205,5 @@
     });
   </script>
 </body>
+
 </html>

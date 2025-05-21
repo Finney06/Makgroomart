@@ -1,58 +1,48 @@
-/* 🔽 Filter Overlay Animation */
-.filter-overlay {
-  position: absolute;
-  top: 160px;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 999;
-  padding: 2rem;
-  transform: translateY(-10%);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  pointer-events: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+/* Chip container: horizontal scroll on mobile */
+.filter-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  scroll-behavior: smooth;
 }
 
-.filter-overlay.active {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ❌ Close Button */
-.close-filter {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #444;
-}
-
-/* Filter grid and buttons */
-.filter-grid h3 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.category-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-}
-
-.filter-btn {
-  padding: 10px;
+.chip {
   background-color: #00704a;
   color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
-.filter-btn:hover {
-  background-color: #005e3a;
+.chip .remove-chip {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Clear All Button */
+.clear-all-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.clear-all-btn:hover {
+  background-color: #c9302c;
 }

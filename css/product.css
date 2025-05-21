@@ -151,12 +151,14 @@ header {
 }
 
 /* Filter Chips */
-/* .filter-chips {
+.filter-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 0 2rem;
-  margin-bottom: 1rem;
+   overflow-x: auto;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  scroll-behavior: smooth;
 }
 
 .chip {
@@ -168,6 +170,7 @@ header {
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .chip .remove-chip {
@@ -176,7 +179,26 @@ header {
   color: white;
   font-weight: bold;
   cursor: pointer;
-} */
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* Clear All Button */
+.clear-all-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+  white-space: nowrap;
+}
+
+.clear-all-btn:hover {
+  background-color: #c9302c;
+}
 
 /* Dim background when filter dropdown is active */
 #pageOverlay.blurred {
@@ -193,7 +215,7 @@ header {
 
 @media screen and (max-width: 450px) {
   .main {
-    height: 22vh;
+    height: 20vh;
   }
 
   .filter-grid h3 {
@@ -201,7 +223,7 @@ header {
   }
 
   .category-list {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 0.5rem;
   }
 }

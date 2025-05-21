@@ -3,8 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterOverlay = document.getElementById("filterOverlay");
   const closeBtn = document.getElementById("closeFilterOverlay");
   const pageOverlay = document.getElementById("pageOverlay");
+  const chipContainer = document.getElementById("activeFilters");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const clearAllBtn = document.getElementById("clearAllFilters");
 
-  // Toggle filter dropdown + animation + dimming
+  const activeFilters = new Set(); // To track selected categories
+
   function toggleFilterDropdown(forceClose = false) {
     const isActive = filterOverlay.classList.contains("active");
 
@@ -21,4 +25,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   filterToggle.addEventListener("click", () => toggleFilterDropdown());
   closeBtn.addEventListener("click", () => toggleFilterDropdown(true));
+
+  // 🔘 On category button click, create chip
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const category = btn.textContent.trim();
+      const key = category.toLowerCase();
+
+      if (!activeFilters.has(key)) {
+        activeFilters.add(key);
+        createChip(category, key);
+      }
+
+      // Don't close dropdown now (can be added later)
+    });
+  });
+
+  // 🔘 Create chip element
+  function createChip(label, key) {
+    const chip = document.createElement("div");
+    chip.classList.add("chip");
+    chip.dataset.category = key;
+    chip.innerHTML = `
+      ${label}
+      <button class="remove-chip" title="Remove">&times;</button>
+    `;
+   chipContainer.insertBefore(chip, clearAllBtn); // insert before "Clear All"
+
+    // ❌ Remove chip on click
+    chip.querySelector(".remove-chip").addEventListener("click", () => {
+      chip.remove();
+      activeFilters.delete(key);
+    });
+  }
+
+    // 🔘 Clear All Button Handler
+  clearAllBtn.addEventListener("click", () => {
+    const chips = chipContainer.querySelectorAll(".chip");
+    chips.forEach(chip => chip.remove());
+    activeFilters.clear();
+  });
 });
