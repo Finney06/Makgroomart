@@ -69,14 +69,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
     // 🔢 Update badge count
-  function updateFilterCount() {
-    const count = activeFilters.size;
+function updateFilterCount() {
+  const count = activeFilters.size;
 
-    if (count > 0) {
-      filterCountBadge.textContent = count;
-      filterCountBadge.classList.add("show");
-    } else {
-      filterCountBadge.classList.remove("show");
-    }
+  if (count > 0) {
+    filterCountBadge.textContent = ` (${count})`;
+    filterCountBadge.style.display = "inline";
+  } else {
+    filterCountBadge.textContent = "";
+    filterCountBadge.style.display = "none";
   }
+}
+
 });
