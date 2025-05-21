@@ -6,7 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const chipContainer = document.getElementById("activeFilters");
   const filterButtons = document.querySelectorAll(".filter-btn");
   const clearAllBtn = document.getElementById("clearAllFilters");
-  const filterCountBadge = document.getElementById("filterCountBadge"); 
+  const filterCountBadge = document.getElementById("filterCountBadge");
+  const seeMoreBtns = document.querySelectorAll(".see-more-btn");
+  const backBtns = document.querySelectorAll(".back-to-products");
+
+
 
   const activeFilters = new Set(); // To track selected categories
 
@@ -50,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ${label}
       <button class="remove-chip" title="Remove">&times;</button>
     `;
-   chipContainer.insertBefore(chip, clearAllBtn); // insert before "Clear All"
+    chipContainer.insertBefore(chip, clearAllBtn); // insert before "Clear All"
 
     // ❌ Remove chip on click
     chip.querySelector(".remove-chip").addEventListener("click", () => {
@@ -60,25 +64,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    // 🔘 Clear All Button Handler
+  // 🔘 Clear All Button Handler
   clearAllBtn.addEventListener("click", () => {
     const chips = chipContainer.querySelectorAll(".chip");
     chips.forEach(chip => chip.remove());
     activeFilters.clear();
-    updateFilterCount(); 
+    updateFilterCount();
   });
 
-    // 🔢 Update badge count
-function updateFilterCount() {
-  const count = activeFilters.size;
+  // 🔢 Update badge count
+  function updateFilterCount() {
+    const count = activeFilters.size;
 
-  if (count > 0) {
-    filterCountBadge.textContent = ` (${count})`;
-    filterCountBadge.style.display = "inline";
-  } else {
-    filterCountBadge.textContent = "";
-    filterCountBadge.style.display = "none";
+    if (count > 0) {
+      filterCountBadge.textContent = ` (${count})`;
+      filterCountBadge.style.display = "inline";
+
+      // Trigger grow animation
+      filterCountBadge.classList.remove("grow"); // reset
+      void filterCountBadge.offsetWidth; // force reflow
+      filterCountBadge.classList.add("grow");
+    } else {
+      filterCountBadge.textContent = "";
+      filterCountBadge.style.display = "none";
+    }
   }
-}
 
+  seeMoreBtns.forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = btn.dataset.target;
+      document.getElementById(targetId) ?.classList.add("active");
+    });
+  });
+
+  backBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest(".slide-page").classList.remove("active");
+    });
+  });
 });

@@ -1,10 +1,34 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --green: #2c5f2d;
+  --grey: linear-gradient(90deg, #2c5f2d 0%, #666666 100%);
+  --red: #d9534f;
+  --red-hover: #c9302c;
+  --light-green: #14ff72cb;
+  --product-background: #e0f0cd;
+  --body-background: #eaf3de;
+  --header-background: #f5f5dc;
+  --search-background: #ccc;
+  --filter-button-color: #00704a;
+  --filter-button-color-hover: #005e3a;
+  --background: linear-gradient(
+    180deg,
+    #f5f5dc 41.84%,
+    #bfcdad 80%,
+    rgba(44, 95, 45, 0) 100%
+  );
+  --font-family-1: "Open Sans", sans-serif;
+  --background2: linear-gradient(180deg, #fffff5 0%, #bfcdad 100%);
+}
+
 body {
-  font-family: "Open Sans", sans-serif;
-  background: #eaf3de;
+  font-family: var(--font-family-1);
+  background: var(--body-background);
 }
 
 header {
-  background: #f5f5dc;
+  background: var(--header-background);
 }
 
 .main {
@@ -22,7 +46,7 @@ header {
   left: 50%;
   width: 400%;
   height: 495%;
-  background: #eaf3de;
+  background: var(--body-background);
   border-radius: 50%;
   translate: -50% 0;
 }
@@ -52,7 +76,7 @@ header {
 .slide {
   width: 100%;
   height: 100%;
-  border: 3px solid #eaf3de;
+  border: 3px solid var(--body-background);
   scroll-snap-align: center;
 }
 
@@ -64,7 +88,7 @@ header {
 
 .product-controls {
   position: relative;
-  background-color: #eaf3de;
+  background-color: var(--body-background);
   padding: 2rem 1rem 0rem;
   text-align: center;
   z-index: 5;
@@ -74,14 +98,14 @@ header {
   padding: 0.5rem;
   width: 70%;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--search-background);
   font-family: "Open Sans", sans-serif;
 }
 
 #filterToggle {
   font-family: "Open Sans", sans-serif;
-  background: #2c5f2d;
-  color: #fff;
+  background: var(--green);
+  color: var(--white);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -92,10 +116,10 @@ header {
 /* 🔽 Filter Overlay Animation */
 .filter-overlay {
   position: absolute;
-  top: 160px;
+  top: 150px;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: var(--white);
   z-index: 999;
   padding: 2rem;
   transform: translateY(-10%);
@@ -138,8 +162,8 @@ header {
 
 .filter-btn {
   padding: 10px;
-  background-color: #00704a;
-  color: white;
+  background-color: var(--filter-button-color);
+  color: var(--white);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -147,7 +171,7 @@ header {
 }
 
 .filter-btn:hover {
-  background-color: #005e3a;
+  background-color: var(--filter-button-color-hover);
 }
 
 /* Filter Chips */
@@ -155,15 +179,15 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-   overflow-x: auto;
+  overflow-x: auto;
   padding: 0.5rem 0;
   margin-bottom: 2rem;
   scroll-behavior: smooth;
 }
 
 .chip {
-  background-color: #00704a;
-  color: white;
+  background-color: var(--filter-button-color);
+  color: var(--white);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 14px;
@@ -176,7 +200,7 @@ header {
 .chip .remove-chip {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--white);
   font-weight: bold;
   cursor: pointer;
   font-size: 1.8rem;
@@ -185,19 +209,19 @@ header {
 
 /* Clear All Button */
 .clear-all-btn {
-  background-color: #d9534f;
-  color: white;
+  background-color: var(--red);
+  color: var(--white);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 14px;
   border: none;
   cursor: pointer;
-    font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   white-space: nowrap;
 }
 
 .clear-all-btn:hover {
-  background-color: #c9302c;
+  background-color: var(--red-hover);
 }
 
 /* Dim background when filter dropdown is active */
@@ -210,8 +234,7 @@ header {
 /* 🔢 Filter Count Badge */
 #filterCountBadge {
   font-weight: bold;
-  margin-left: 4px;
-  color: white;
+  color: var(--white);
   display: none;
   transition: transform 0.2s ease;
 }
@@ -232,13 +255,203 @@ header {
   }
 }
 
-
-
 #filterToggle.active .filter-badge,
 .filter-badge.show {
   display: inline-flex;
 }
 
+.products-section {
+  margin: 0 auto;
+  padding: 30px 0 25px;
+}
+
+.products-section h1 {
+  text-align: center;
+  font-size: 4.5rem;
+  color: var(--green);
+}
+
+.product-catergories {
+  background: #e0f0cd;
+  /* border-radius: 20px; */
+  padding-bottom: 1.5rem;
+}
+
+.category-name-header {
+  padding: 15px 25px 10px;
+}
+
+.product-catergories .products-card {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  margin: 0 2.5rem 0;
+  scroll-snap-type: x mandatory;
+}
+
+.product-catergories .products-card .card {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 220px;
+  max-height: 300px;
+}
+
+.card {
+  background: var(--body-background);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+  /* margin-bottom: 0.5rem; */
+}
+
+.card .product-name {
+  font-weight: bold;
+  color: var(--green);
+  /* margin: 0.5rem 0; */
+  text-transform: uppercase;
+}
+
+.card .add-to-cart-btn {
+  background-color: var(--green);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}
+
+.card .add-to-cart-btn:hover {
+  background-color: var(--filter-button-color-hover);
+}
+
+/* Default layout (grid) for slide page */
+.slide-page .products-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.slide-page .card {
+  width: 100%;
+  height: auto;
+}
+
+/* Slide-in page base style */
+.slide-page {
+  position: fixed;
+  top: 0;
+  left: 100%; /* start off-screen */
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 2000;
+  overflow-y: auto;
+  transition: left 0.4s ease;
+  padding: 2rem;
+  background: var(--product-background);
+   padding-top: 70px;
+}
+
+.slide-page .products-card {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* When active, slide into view */
+.slide-page.active {
+  left: 0;
+}
+
+.slide-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+    background: var(--product-background);
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  z-index: 1999;
+  gap: 1rem;
+}
+
+.slide-title {
+  margin: 0 auto;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--green);
+  text-align: center;
+}
+
+.back-to-products {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--green);
+  cursor: pointer;
+}
+
+
+/* Cart icon */
+.slide-cart-icon {
+  font-size: 1.5rem;
+  color: var(--green);
+}
+
+@media screen and (max-width: 500px) {
+  .slide-page .products-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card img {
+    height: 92.8px;
+  }
+
+  .card .add-to-cart-btn {
+    padding: 3px 15px;
+    font-size: 12px;
+  }
+
+  .category-name-header {
+    padding: 15px 10px 10px;
+  }
+
+  .product-catergories .products-card .card {
+    width: 116px;
+    height: 172.8px;
+    padding: 0.75rem;
+  }
+
+  .products-section h1 {
+    font-size: 2rem;
+  }
+
+    .slide-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* Optional tweak for smaller card on smaller screens */
+@media screen and (max-width: 768px) {
+}
 
 @media screen and (max-width: 650px) {
   .main {
@@ -258,5 +471,9 @@ header {
   .category-list {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 0.5rem;
+  }
+
+  #productSearch {
+    width: 60%;
   }
 }
