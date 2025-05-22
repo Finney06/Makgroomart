@@ -241,6 +241,15 @@ header {
   scroll-snap-type: x mandatory;
 }
 
+.outer:hover {
+  cursor: grab;
+}
+
+.outer:active {
+  cursor: grabbing;
+}
+
+
 .inner {
   position: relative;
   flex: 0 0 33%;

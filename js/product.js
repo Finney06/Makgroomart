@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterCountBadge = document.getElementById("filterCountBadge");
   const seeMoreBtns = document.querySelectorAll(".see-more-btn");
   const backBtns = document.querySelectorAll(".back-to-products");
+  //  const outer = document.querySelector(".outer");
+  // const slides = document.querySelectorAll(".inner");
+
+  // let currentIndex = 0;
+
+  //   setInterval(() => {
+  //     currentIndex = (currentIndex + 1) % slides.length;
+  //     outer.scrollTo({
+  //       left: outer.clientWidth * currentIndex,
+  //       behavior: "smooth"
+  //     });
+  //   }, 6000);
 
 
 
