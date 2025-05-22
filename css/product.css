@@ -31,6 +31,180 @@ header {
   background: var(--header-background);
 }
 
+.product-controls {
+  position: relative;
+  background-color: var(--body-background);
+  padding: 2rem 1rem 0rem;
+  text-align: center;
+  z-index: 5;
+}
+
+#productSearch {
+  padding: 0.5rem;
+  width: 70%;
+  border-radius: 8px;
+  border: 1px solid var(--search-background);
+  font-family: "Open Sans", sans-serif;
+}
+
+#filterToggle {
+  font-family: "Open Sans", sans-serif;
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 🔢 Filter Count Badge */
+#filterCountBadge {
+  font-weight: bold;
+  color: var(--white);
+  display: none;
+  transition: transform 0.2s ease;
+}
+
+#filterCountBadge.grow {
+  animation: grow-bounce 0.3s ease;
+}
+
+@keyframes grow-bounce {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#filterToggle.active .filter-badge,
+.filter-badge.show {
+  display: inline-flex;
+}
+
+/* 🔽 Filter Overlay Animation */
+.filter-overlay {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  z-index: 999;
+  padding: 2rem;
+  transform: translateY(-10%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#filterOverlay.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ❌ Close Button */
+.close-filter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #444;
+}
+
+/* Filter grid and buttons */
+.filter-grid h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Filter Chips */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  scroll-behavior: smooth;
+}
+
+.chip {
+  background-color: var(--filter-button-color);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.chip .remove-chip {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* Clear All Button */
+.clear-all-btn {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  white-space: nowrap;
+}
+
+.clear-all-btn:hover {
+  background-color: var(--red-hover);
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.filter-btn {
+  padding: 10px;
+  background-color: var(--filter-button-color);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+
+.filter-btn:hover {
+  background-color: var(--filter-button-color-hover);
+}
+
+/* Dim background when filter dropdown is active */
+#pageOverlay.blurred {
+  filter: blur(6px);
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
+
 .main {
   position: relative;
   width: 100%;
@@ -86,180 +260,7 @@ header {
   object-fit: cover;
 }
 
-.product-controls {
-  position: relative;
-  background-color: var(--body-background);
-  padding: 2rem 1rem 0rem;
-  text-align: center;
-  z-index: 5;
-}
-
-#productSearch {
-  padding: 0.5rem;
-  width: 70%;
-  border-radius: 8px;
-  border: 1px solid var(--search-background);
-  font-family: "Open Sans", sans-serif;
-}
-
-#filterToggle {
-  font-family: "Open Sans", sans-serif;
-  background: var(--green);
-  color: var(--white);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* 🔽 Filter Overlay Animation */
-.filter-overlay {
-  position: absolute;
-  top: 150px;
-  left: 0;
-  width: 100%;
-  background: var(--white);
-  z-index: 999;
-  padding: 2rem;
-  transform: translateY(-10%);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  pointer-events: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-#filterOverlay.active {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ❌ Close Button */
-.close-filter {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #444;
-}
-
-/* Filter grid and buttons */
-.filter-grid h3 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.category-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.filter-btn {
-  padding: 10px;
-  background-color: var(--filter-button-color);
-  color: var(--white);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: "Open Sans", sans-serif;
-}
-
-.filter-btn:hover {
-  background-color: var(--filter-button-color-hover);
-}
-
-/* Filter Chips */
-.filter-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.5rem 0;
-  margin-bottom: 2rem;
-  scroll-behavior: smooth;
-}
-
-.chip {
-  background-color: var(--filter-button-color);
-  color: var(--white);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-
-.chip .remove-chip {
-  background: transparent;
-  border: none;
-  color: var(--white);
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1.8rem;
-  line-height: 1;
-}
-
-/* Clear All Button */
-.clear-all-btn {
-  background-color: var(--red);
-  color: var(--white);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  font-family: "Open Sans", sans-serif;
-  white-space: nowrap;
-}
-
-.clear-all-btn:hover {
-  background-color: var(--red-hover);
-}
-
-/* Dim background when filter dropdown is active */
-#pageOverlay.blurred {
-  filter: blur(6px);
-  pointer-events: none;
-  transition: filter 0.3s ease;
-}
-
-/* 🔢 Filter Count Badge */
-#filterCountBadge {
-  font-weight: bold;
-  color: var(--white);
-  display: none;
-  transition: transform 0.2s ease;
-}
-
-#filterCountBadge.grow {
-  animation: grow-bounce 0.3s ease;
-}
-
-@keyframes grow-bounce {
-  0% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-#filterToggle.active .filter-badge,
-.filter-badge.show {
-  display: inline-flex;
-}
-
+/* PRODUCT SECTION */
 .products-section {
   margin: 0 auto;
   padding: 30px 0 25px;
@@ -271,9 +272,8 @@ header {
   color: var(--green);
 }
 
-.product-catergories {
+.product-categories {
   background: #e0f0cd;
-  /* border-radius: 20px; */
   padding-bottom: 1.5rem;
 }
 
@@ -361,9 +361,7 @@ header {
   z-index: 2000;
   overflow-y: auto;
   transition: left 0.4s ease;
-  padding: 2rem;
   background: var(--product-background);
-   padding-top: 70px;
 }
 
 .slide-page .products-card {
@@ -384,25 +382,17 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  height: 5.5rem;
   display: flex;
-    background: var(--product-background);
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  z-index: 1999;
-  gap: 1rem;
+  padding: 0 1.5rem;
+  background: var(--product-background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 10;
 }
 
-.slide-title {
-  margin: 0 auto;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--green);
-  text-align: center;
-}
-
-.back-to-products {
+.slide-header .back-to-products {
   background: none;
   border: none;
   font-size: 1.6rem;
@@ -410,11 +400,38 @@ header {
   cursor: pointer;
 }
 
-
-/* Cart icon */
-.slide-cart-icon {
-  font-size: 1.5rem;
+.slide-header .slide-title {
+  font-size: 2.5rem;
+  font-weight: bold;
   color: var(--green);
+  text-align: center;
+  flex-grow: 1;
+}
+
+.slide-header .cart-wrapper {
+  right: 25px;
+  top: 15px;
+  position: absolute;
+}
+
+/* RESPONSIVE STYLING */
+@media screen and (max-width: 450px) {
+  .main {
+    height: 20vh;
+  }
+
+  .filter-grid h3 {
+    font-size: 18px;
+  }
+
+  .category-list {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+  }
+
+  #productSearch {
+    width: 60%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -444,13 +461,9 @@ header {
     font-size: 2rem;
   }
 
-    .slide-title {
+  .slide-title {
     font-size: 1.4rem;
   }
-}
-
-/* Optional tweak for smaller card on smaller screens */
-@media screen and (max-width: 768px) {
 }
 
 @media screen and (max-width: 650px) {
@@ -459,21 +472,9 @@ header {
   }
 }
 
-@media screen and (max-width: 450px) {
-  .main {
-    height: 20vh;
-  }
-
-  .filter-grid h3 {
-    font-size: 18px;
-  }
-
-  .category-list {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 0.5rem;
-  }
-
-  #productSearch {
-    width: 60%;
+/* Optional tweak for smaller card on smaller screens */
+@media screen and (max-width: 768px) {
+  .product-catergories .products-card {
+    margin: 0 1rem 0;
   }
 }
