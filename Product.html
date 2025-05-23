@@ -10,16 +10,13 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/product.css" />
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
 
   <!-- JavaScript -->
   <script defer src="js/main.js"></script>
-  <script defer src="js/product.js"></script>
+  <script defer type="module" src="js/product.js"></script>
 
   <style>
     /* SCROLL UP BUTTON */
@@ -126,12 +123,12 @@
       <div class="outer">
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/Cocoa-Seedlings.jpg" alt="">
+            <img src="./assets/images/product-images/rice.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/catfish.jpg" alt="">
+            <img src="./assets/images/product-images/catfish.jpg" alt="">
           </div>
         </div>
         <div class="inner">
@@ -156,151 +153,139 @@
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
+            <img src="./assets/images/product-images/chaff-cutter.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/Cashew.jpg" alt="">
+            <img src="./assets/images/product-images/Cashew.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/potatos.jpg" alt="">
+            <img src="./assets/images/product-images/potatos.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/Goat.jpg" alt="">
+            <img src="./assets/images/product-images/Goat.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/Hibiscus.jpg" alt="">
+            <img src="./assets/images/product-images/Hibiscus.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/potatos.jpg" alt="">
+            <img src="./assets/images/product-images/potatos.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/cocoa-beans.jpg" alt="">
+            <img src="./assets/images/product-images/cocoa-beans.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/soybean-close-up_9635-3209.jpg" alt="">
+            <img src="./assets/images/product-images/soybean-close-up_9635-3209.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/sunflower-seeds-537652_640.jpg" alt="">
+            <img src="./assets/images/product-images/sunflower-seeds-537652_640.jpg" alt="">
           </div>
         </div>
         <div class="inner">
           <div class="slide">
-            <img src="./assets/images/product-preview/tractor.jpg" alt="">
+            <img src="./assets/images/product-images/tractor.jpg" alt="">
           </div>
         </div>
 
       </div>
     </section>
+
 
     <section class="products-section">
       <h1>AGRICULTURAL PRODUCTS</h1>
-      <div class="product-categories">
-        <div class="section-header category-name-header">
-          <h2>CEREALS</h2>
-          <a href="#" class="see-more-btn" data-target="cerealsPage">See More</a>
-        </div>
-        <div class="products-card">
-          <div class="card">
-            <img class="" src="./assets/images/cereals2.jpg" alt="">
-            <p class="product-name">Rice</p>
-            <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-          <div class="card">
-            <img class="" src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
-            <p class="product-name">Millet</p>
-            <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
+      <div class="product-categories" id="dynamicProductCategories">
+        <!-- Categories will be rendered here dynamically by JS -->
 
-          <div class="card">
-            <img class="" src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
-            <p class="product-name">Sorghum</p>
-            <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-
-
-
-          <div class="card hide">
-            <img class="" src="./assets/images/product-preview/potatos.jpg" alt="">
-            <p class="product-name">Wheat</p>
-            <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-
-          <div class="card hide">
-            <img class="" src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
-            <p class="product-name">Sorghum</p>
-            <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-        </div>
       </div>
     </section>
   </div>
 
-  <div class="slide-page" id="cerealsPage">
-    <div class="slide-header">
-      <button class="back-to-products" title="Back">
-        <i class="fas fa-arrow-left"></i>
-      </button>
-      <h2 class="slide-title">Cereals</h2>
-      <div class="cart-wrapper">
-        <a href="cart.html" class="cart-link">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="cart-count">0</span>
-        </a>
+  <!-- Footer Section -->
+  <footer>
+    <div class="row">
+      <div class="col">
+        <img src="./assets/logo/logo4.jpg" class="footer-logo" alt="">
+        <p>Your one stop Agro Hub for all your Agriculture and Food demands!!!</p>
+      </div>
+      <div class="col">
+        <h3>SUPPORT <div class="underline"><span></span></div>
+        </h3>
+        <P>Contact Us</P>
+        <p>About Us</p>
+        <p>T&C's</p>
+      </div>
+      <div class="col">
+        <h3>INFORMATION <div class="underline"><span></span></div>
+        </h3>
+        <p>Help and FAQ's</p>
+        <p>Location</p>
+        <p>Credits</p>
+      </div>
+      <div class="col">
+        <h3>Newsletter <div class="underline"><span></span></div>
+        </h3>
+        <form action="https://formsubmit.co/83a0bbab4aa1a0f19300275d59141898" method="POST" class="news">
+          <i class="far fa-envelope"></i>
+
+          <input type="email" name="email" placeholder="Enter your email" required>
+
+          <!-- Optional hidden fields -->
+          <input type="hidden" name="_subject" value="New Newsletter Subscription!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_honey" style="display:none">
+          <input type="hidden" name="_next" value="https://finney06.github.io/Makgroomart/thanks.html">
+
+          <button type="submit">
+            <i class="fa-solid fa-arrow-right-long fast"></i>
+          </button>
+        </form>
+
+        <div class="mail contacts">
+          <i class="fa-solid fa-at icon"></i>
+          <a class="footer-link" href="mailto:makgromart01@gmail.com">makgromart01@gmail.com</a>
+        </div>
+        <div class="phone contacts">
+          <i class="fa-solid fa-phone-volume icon"></i>
+          <a class="footer-link" href="tel:+23902565689">+2347037981091</a>
+        </div>
+        <div class="time contacts">
+          <i class="fa-solid fa-clock icon"></i>
+          <p>9:00am - 6:00pm</p>
+        </div>
+
+        <div class="socials contacts">
+          <a href="https://www.facebook.com/share/198hbivwXu/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-facebook fab"></i>
+          </a>
+          <a href="https://www.instagram.com/makgro.mart?igsh=MWIwaHptaDdhOXplcg==" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram fab"></i>
+          </a>
+          <a href="https://wa.me/2348125844055" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp fab"></i>
+          </a>
+        </div>
+
       </div>
     </div>
-
-
-
-
-    <div class="products-card">
-      <div class="card">
-        <img class="" src="./assets/images/cereals2.jpg" alt="">
-        <p class="product-name">Rice</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-
-      <div class="card">
-        <img class="" src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
-        <p class="product-name">Millet</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-
-      <div class="card">
-        <img class="" src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
-        <p class="product-name">Sorghum</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-
-      <div class="card">
-        <img class="" src="./assets/images/product-preview/potatos.jpg" alt="">
-        <p class="product-name">Wheat</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-
-      <div class="card">
-        <img class="" src="./assets/images/product-preview/chaff-cutter.jpg" alt="">
-        <p class="product-name">Sorghum</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-
+    <hr class="hr1">
+    <p class="copyright">© Makromart 2025 – All Rights Reserved.</p>
+  </footer>
 
   <!-- SCROLL UP BUTTON -->
   <a href="#" id="scrollToTopButton" class="scroll-to-top-button">

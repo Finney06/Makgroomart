@@ -282,12 +282,17 @@ header {
 }
 
 .product-categories {
-  background: #e0f0cd;
   padding-bottom: 1.5rem;
 }
 
+.product-category {
+  margin-bottom: 20px;
+  background: #e0f0cd;
+  padding-bottom: 20px;
+}
+
 .category-name-header {
-  padding: 15px 25px 10px;
+  padding: 15px 11rem 10px;
 }
 
 .product-categories .products-card {
@@ -297,20 +302,29 @@ header {
   justify-content: flex-start;
   gap: 2.5rem;
   padding-top: 1rem;
-  margin: 0 2.5rem 0;
+  margin: 0 10rem 0;
   scroll-snap-type: x mandatory;
 }
 
 .product-categories .products-card .card {
   scroll-snap-align: start;
   flex: 0 0 auto;
-  width: 300px;
-  max-height: 300px;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  /* max-height: 300px; */
+}
+
+.product-categories .products-card .card:hover {
+ transform: translateY(-5px) scale(1.01); /* lift and scale */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* bigger and darker shadow */
+  cursor: pointer;
+  z-index: 10; /* bring above other cards */
 }
 
 .card {
   background: var(--body-background);
-  padding: 1rem;
+  padding: 1rem 1rem 3rem;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -335,7 +349,8 @@ header {
   background-color: var(--green);
   color: white;
   border: none;
-  padding: 6px 12px;
+  margin-top: 1rem;
+  padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
@@ -423,6 +438,79 @@ header {
   position: absolute;
 }
 
+.slide-title {
+  text-transform: uppercase;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.outer::-webkit-scrollbar,
+.products-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.outer,
+.products-card {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Wrapper to position scroll button */
+.scroll-wrapper {
+  position: relative;
+}
+
+/* Right scroll arrow styling */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    /* right: 110px; */
+    transform: translateY(-50%);
+    background-color: rgba(49, 49, 51, .5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-wrapper:hover .scroll-arrow {
+  opacity: 1;
+}
+
+.scroll-arrow.scroll-left {
+  left: 110px;
+  right: auto;
+}
+.scroll-arrow.scroll-right {
+  right: 110px;
+}
+
+.products-card.no-scroll {
+  overflow-x: hidden;
+  justify-content: center;
+}
+.scroll-wrapper.no-scroll .scroll-arrow {
+  display: none !important;
+}
+
+
+/* Only show on larger screens */
+@media (max-width: 768px) {
+  .scroll-arrow {
+    display: none;
+  }
+
+  .products-card.no-scroll {
+    overflow-x: hidden;
+    justify-content: center;
+  }
+}
+
+
 /* RESPONSIVE STYLING */
 /* Optional tweak for smaller card on smaller screens */
 @media screen and (max-width: 768px) {
@@ -449,6 +537,7 @@ header {
   .card .add-to-cart-btn {
     padding: 3px 15px;
     font-size: 12px;
+            margin-top: 0.5rem;
   }
 
   .category-name-header {
@@ -457,8 +546,8 @@ header {
 
   .product-categories .products-card .card {
     width: 116px;
-    height: 172.8px;
-    padding: 0.75rem;
+    /* height: 172.8px; */
+    padding: 0.75rem 0.75rem 1.5rem;
   }
 
   .products-section h1 {
@@ -488,6 +577,3 @@ header {
     width: 60%;
   }
 }
-
-
-
