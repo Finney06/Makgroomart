@@ -55,24 +55,38 @@ filterCategories.forEach(category => {
 categoryListContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("filter-btn")) {
     const category = e.target.textContent.trim();
+    const key = category.toLowerCase();
+
+    // Add chip if not already active
+    if (!activeFilters.has(key)) {
+      activeFilters.add(key);
+      createChip(category, key);
+      updateFilterCount();
+      filterProductCategories(); // 🔁 Update product view
+    }
+
+    // Your filter logic here (if any)
     console.log("Filter by:", category);
-    // Trigger your filtering logic here
   }
 });
 
-  // Add filter chip
-  filterButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const category = btn.textContent.trim();
-      const key = category.toLowerCase();
-      if (!activeFilters.has(key)) {
-        activeFilters.add(key);
-        createChip(category, key);
-        updateFilterCount();
-      }
-    });
-  });
+function filterProductCategories() {
+  const allCategorySections = document.querySelectorAll('.product-category');
+  if (activeFilters.size === 0) {
+    allCategorySections.forEach(section => section.style.display = 'block');
+    return;
+  }
 
+  allCategorySections.forEach(section => {
+    const headerText = section.querySelector('.category-name-header h2')?.textContent.toLowerCase();
+    const match = [...activeFilters].some(filter => headerText.includes(filter));
+    section.style.display = match ? 'block' : 'none';
+  });
+}
+
+
+
+  // Add filter chip
   function createChip(label, key) {
     const chip = document.createElement("div");
     chip.classList.add("chip");
@@ -87,6 +101,8 @@ categoryListContainer.addEventListener("click", (e) => {
       chip.remove();
       activeFilters.delete(key);
       updateFilterCount();
+      filterProductCategories(); // 🔁 Update product view
+
     });
   }
 
@@ -94,6 +110,8 @@ categoryListContainer.addEventListener("click", (e) => {
     chipContainer.querySelectorAll(".chip").forEach(chip => chip.remove());
     activeFilters.clear();
     updateFilterCount();
+    filterProductCategories(); // 🔁 Update product view
+
   });
 
   function updateFilterCount() {
