@@ -7,26 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const clearAllBtn = document.getElementById("clearAllFilters");
   const filterCountBadge = document.getElementById("filterCountBadge");
-  const seeMoreBtns = document.querySelectorAll(".see-more-btn");
-  const backBtns = document.querySelectorAll(".back-to-products");
-  //  const outer = document.querySelector(".outer");
-  // const slides = document.querySelectorAll(".inner");
-
-  // let currentIndex = 0;
-
-  //   setInterval(() => {
-  //     currentIndex = (currentIndex + 1) % slides.length;
-  //     outer.scrollTo({
-  //       left: outer.clientWidth * currentIndex,
-  //       behavior: "smooth"
-  //     });
-  //   }, 6000);
-
-  const activeFilters = new Set(); // To track selected categories
+  const activeFilters = new Set();
 
   function toggleFilterDropdown(forceClose = false) {
     const isActive = filterOverlay.classList.contains("active");
-
     if (isActive || forceClose) {
       filterOverlay.classList.remove("active");
       filterToggle.classList.remove("active");
@@ -41,12 +25,46 @@ document.addEventListener("DOMContentLoaded", () => {
   filterToggle.addEventListener("click", () => toggleFilterDropdown());
   closeBtn.addEventListener("click", () => toggleFilterDropdown(true));
 
-  // 🔘 On category button click, create chip
+
+  const filterCategories = [
+  "Cereals",
+  "Legumes",
+  "Tubers",
+  "Flour",
+  "Oil",
+  "Spices",
+  "Grasses",
+  "Feeds",
+  "Fertilizers",
+  "Chemicals",
+  "Animal Farm",
+  "Planting Materials",
+  "Special Products"
+];
+
+const categoryListContainer = document.getElementById("categoryList");
+
+filterCategories.forEach(category => {
+  const button = document.createElement("button");
+  button.className = "filter-btn";
+  button.textContent = category;
+  button.setAttribute("data-category", category.toLowerCase().replace(/\s+/g, "-")); // for filtering
+  categoryListContainer.appendChild(button);
+});
+
+categoryListContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("filter-btn")) {
+    const category = e.target.textContent.trim();
+    console.log("Filter by:", category);
+    // Trigger your filtering logic here
+  }
+});
+
+  // Add filter chip
   filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const category = btn.textContent.trim();
       const key = category.toLowerCase();
-
       if (!activeFilters.has(key)) {
         activeFilters.add(key);
         createChip(category, key);
@@ -55,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 🔘 Create chip element
   function createChip(label, key) {
     const chip = document.createElement("div");
     chip.classList.add("chip");
@@ -64,9 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ${label}
       <button class="remove-chip" title="Remove">&times;</button>
     `;
-    chipContainer.insertBefore(chip, clearAllBtn); // insert before "Clear All"
+    chipContainer.insertBefore(chip, clearAllBtn);
 
-    // ❌ Remove chip on click
     chip.querySelector(".remove-chip").addEventListener("click", () => {
       chip.remove();
       activeFilters.delete(key);
@@ -74,94 +90,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🔘 Clear All Button Handler
   clearAllBtn.addEventListener("click", () => {
-    const chips = chipContainer.querySelectorAll(".chip");
-    chips.forEach(chip => chip.remove());
+    chipContainer.querySelectorAll(".chip").forEach(chip => chip.remove());
     activeFilters.clear();
     updateFilterCount();
   });
 
-  // 🔢 Update badge count
   function updateFilterCount() {
     const count = activeFilters.size;
-
     if (count > 0) {
-      filterCountBadge.textContent = ` (${count})`;
+      filterCountBadge.textContent = `(${count})`;
       filterCountBadge.style.display = "inline";
-
-      // Trigger grow animation
-      filterCountBadge.classList.remove("grow"); // reset
-      void filterCountBadge.offsetWidth; // force reflow
+      filterCountBadge.classList.remove("grow");
+      void filterCountBadge.offsetWidth;
       filterCountBadge.classList.add("grow");
     } else {
       filterCountBadge.textContent = "";
       filterCountBadge.style.display = "none";
     }
   }
-document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
-  const scrollContainer = wrapper.querySelector(".products-card");
-  const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
-  const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
 
-  const updateButtons = () => {
-    const scrollLeft = scrollContainer.scrollLeft;
-    const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+  // Horizontal scroll behavior
+  document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
+    const scrollContainer = wrapper.querySelector(".products-card");
+    const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
+    const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
 
-    if (scrollLeft <= 10) {
-      leftBtn.style.display = "none";
-      rightBtn.style.display = "block";
-    } else if (scrollLeft >= maxScrollLeft - 10) {
-      rightBtn.style.display = "none";
-      leftBtn.style.display = "block";
-    } else {
-      leftBtn.style.display = "block";
-      rightBtn.style.display = "block";
-    }
-  };
+const updateButtons = () => {
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    leftBtn.style.display = "none";
+    rightBtn.style.display = "none";
+    return;
+  }
 
-  scrollContainer.addEventListener("scroll", updateButtons);
-  updateButtons(); // Run initially
+  const scrollLeft = scrollContainer.scrollLeft;
+  const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+  leftBtn.style.display = scrollLeft <= 10 ? "none" : "block";
+  rightBtn.style.display = scrollLeft >= maxScrollLeft - 10 ? "none" : "block";
+};
 
-  rightBtn.addEventListener("click", () => {
-    scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
-  });
 
-  leftBtn.addEventListener("click", () => {
-    scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+    scrollContainer.addEventListener("scroll", updateButtons);
+    updateButtons();
+
+    rightBtn.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
+    });
+    leftBtn.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+    });
   });
 });
-});
 
-
-
-
-
-
-
-
-// products.js
 import categories from './productsData.js';
-
-categories.forEach(category => {
-  console.log(category.name);
-  category.products.forEach(product => {
-    console.log(`Product: ${product.name}`);
-  });
-});
-
 
 const container = document.getElementById('dynamicProductCategories');
 
 categories.forEach(({ category, id, products }) => {
-  const previewCards = products.slice(0, 6).map(({ name, image }) => {
-    return `
-      <div class="card">
-        <img src="${image}" alt="${name}">
-        <p class="product-name">${name}</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>`;
-  }).join('');
+  const previewCards = products.slice(0, 6).map(({ name, image }) => `
+    <div class="card">
+      <img src="${image}" alt="${name}">
+      <p class="product-name">${name}</p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+  `).join('');
 
   const categoryHTML = `
     <div class="product-category">
@@ -170,64 +163,36 @@ categories.forEach(({ category, id, products }) => {
         <a href="#" class="see-more-btn" data-target="${id}">See More</a>
       </div>
       <div class="scroll-wrapper">
-        <button class="scroll-arrow scroll-left" style="display: none;">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="products-card">
-          ${previewCards}
-        </div>
-        <button class="scroll-arrow scroll-right">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+        <button class="scroll-arrow scroll-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="products-card">${previewCards}</div>
+        <button class="scroll-arrow scroll-right"><i class="fas fa-chevron-right"></i></button>
       </div>
-    </div>`;
+    </div>
+  `;
 
   container.insertAdjacentHTML('beforeend', categoryHTML);
+  const wrapper = container.lastElementChild.querySelector(".scroll-wrapper");
+  adjustProductLayout(wrapper);
 });
 
-function adjustProductLayout(wrapper) {
-  const scrollContainer = wrapper.querySelector(".products-card");
-  const productCards = scrollContainer.querySelectorAll(".card");
-  const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
-  const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
-
-  const isMobile = window.innerWidth < 768;
-
-  if (!isMobile && productCards.length <= 4) {
-    scrollContainer.style.justifyContent = "center";
-    scrollContainer.style.overflowX = "hidden";
-    leftBtn.style.display = "none";
-    rightBtn.style.display = "none";
-  } else {
-    scrollContainer.style.justifyContent = "flex-start";
-    scrollContainer.style.overflowX = "auto";
-    leftBtn.style.display = "block";
-    rightBtn.style.display = "block";
-  }
-}
-
-
-
-
-categories.forEach(category => {
+// Slide Pages
+categories.forEach(({ id, category, products }) => {
   const slidePage = document.createElement("div");
   slidePage.className = "slide-page";
-  slidePage.id = category.id;
+  slidePage.id = id;
 
-  const productCards = category.products.map(product => `
+  const productCards = products.map(({ name, image }) => `
     <div class="card">
-      <img src="${product.image}" alt="${product.name}">
-      <p class="product-name">${product.name}</p>
+      <img src="${image}" alt="${name}">
+      <p class="product-name">${name}</p>
       <button class="add-to-cart-btn">Add to Cart</button>
     </div>
   `).join('');
 
   slidePage.innerHTML = `
     <div class="slide-header">
-      <button class="back-to-products" title="Back">
-        <i class="fas fa-arrow-left"></i>
-      </button>
-      <h2 class="slide-title">${category.category}</h2>
+      <button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button>
+      <h2 class="slide-title">${category}</h2>
       <div class="cart-wrapper">
         <a href="cart.html" class="cart-link">
           <i class="fas fa-shopping-cart"></i>
@@ -235,26 +200,41 @@ categories.forEach(category => {
         </a>
       </div>
     </div>
-    <div class="products-card">
-      ${productCards}
+    <div class="scroll-wrapper">
+      <button class="scroll-arrow scroll-left"><i class="fas fa-chevron-left"></i></button>
+      <div class="products-card">${productCards}</div>
+      <button class="scroll-arrow scroll-right"><i class="fas fa-chevron-right"></i></button>
     </div>
   `;
 
   document.body.appendChild(slidePage);
-});
-
-
-// After rendering all categories
-document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
+  const wrapper = slidePage.querySelector('.scroll-wrapper');
   adjustProductLayout(wrapper);
 });
-window.addEventListener("resize", () => {
-  document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
-    adjustProductLayout(wrapper);
-  });
-});
 
+function adjustProductLayout(wrapper) {
+  const scrollContainer = wrapper.querySelector(".products-card");
+  const productCards = scrollContainer.querySelectorAll(".card");
+  const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
+  const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
+  const isMobile = window.innerWidth < 768;
 
+if (isMobile) {
+  scrollContainer.classList.remove("no-scroll"); // Allow swipe scroll
+  leftBtn.style.display = "none";
+  rightBtn.style.display = "none";
+} else if (productCards.length <= 4) {
+  scrollContainer.classList.add("no-scroll"); // Optional: disable arrows & scroll if few items
+  leftBtn.style.display = "none";
+  rightBtn.style.display = "none";
+} else {
+  scrollContainer.classList.remove("no-scroll");
+  leftBtn.style.display = "block";
+  rightBtn.style.display = "block";
+}
+}
+
+// Slide navigation
 document.addEventListener('click', e => {
   const seeMoreBtn = e.target.closest('.see-more-btn');
   if (seeMoreBtn) {
@@ -268,4 +248,8 @@ document.addEventListener('click', e => {
   }
 });
 
-
+window.addEventListener("resize", () => {
+  document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
+    adjustProductLayout(wrapper);
+  });
+});

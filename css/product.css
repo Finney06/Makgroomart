@@ -319,7 +319,7 @@ header {
  transform: translateY(-5px) scale(1.01); /* lift and scale */
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* bigger and darker shadow */
   cursor: pointer;
-  z-index: 10; /* bring above other cards */
+  z-index: 9; /* bring above other cards */
 }
 
 .card {
@@ -380,8 +380,7 @@ header {
   top: 0;
   left: 100%; /* start off-screen */
   width: 100%;
-  height: 100%;
-  background: #fff;
+  height: 100vh;
   z-index: 2000;
   overflow-y: auto;
   transition: left 0.4s ease;
@@ -496,6 +495,7 @@ header {
 .scroll-wrapper.no-scroll .scroll-arrow {
   display: none !important;
 }
+
 
 
 /* Only show on larger screens */
