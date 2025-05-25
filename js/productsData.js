@@ -106,7 +106,8 @@ const categories = [
       { name: "Cocoa Beans", image: "./assets/images/product-images/cocoa-beans.jpg" },
       { name: "Cocoa Shells", image: "./assets/images/product-images/cocoa-shells.jpg"},
       { name: "Cashew Nuts(processed)", image: "./assets/images/product-images/Cashew.jpg" },
-      { name: "Cashew Nuts(Raw)", image: "./assets/images/Cashew-raw.jpg"},
+      { name: "Cashew Nuts(Raw)", image: "./assets/images/product-images/Cashew-raw.jpg"},
+      { name: "Cashew shells", image: "./assets/images/product-images/Cashew shells.jpg"},
       { name: "Sorghum", image: "./assets/images/sorghum.jpg" },
       { name: "Ginger", image: "./assets/images/ginger.jpg" },
       { name: "Hibiscus", image: "./assets/images/product-images/Hibiscus.jpg" },
@@ -114,7 +115,7 @@ const categories = [
       { name: "Sesame", image: "./assets/images/sesame.jpg" },
       { name: "Sunflower", image: "./assets/images/product-images/sunflower-seeds-537652_640.jpg" },
       { name: "Soyabeans", image: "./assets/images/soyabeans.jpg" },
-      { name: "Cotton", image: "./assets/images/cotton.jpg" },
+      { name: "Cotton", image: "./assets/images/product-images/cotton.jpg" },
       { name: "Palm Kernel", image: "./assets/images/palm-kernel.jpg" }
     ]
   },
