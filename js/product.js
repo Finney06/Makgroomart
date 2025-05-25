@@ -120,86 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- SEARCH FUNCTIONALITY ---
-
-  const noResultsMessage = document.getElementById('noResultsMessage');
-
-searchInput.addEventListener('input', () => {
-  const query = searchInput.value.toLowerCase().trim();
-  container.innerHTML = '';
-  let anyMatch = false;
-
-  categories.forEach(({ category, id, products }) => {
-    const matchingProducts = products.filter(product =>
-      product.name.toLowerCase().includes(query)
-    );
-
-    if (matchingProducts.length > 0) {
-      anyMatch = true;
-      const productCards = matchingProducts.map(({ name, image }) => `
-        <div class="card">
-          <img src="${image}" alt="${name}">
-          <p class="product-name">${name}</p>
-          <button class="add-to-cart-btn">Add to Cart</button>
-        </div>
-      `).join('');
-
-      const categoryHTML = `
-        <div class="product-category">
-          <div class="section-header category-name-header">
-            <h2>${category.toUpperCase()}</h2>
-          </div>
-          <div class="scroll-wrapper">
-            <div class="products-card">${productCards}</div>
-          </div>
-        </div>
-      `;
-
-      container.insertAdjacentHTML('beforeend', categoryHTML);
-    }
-  });
-
-  noResultsMessage.style.display = anyMatch ? 'none' : 'block';
-
-  if (!query) {
-    filterProductCategories();
-  }
-});
-
-
-
-  // --- HORIZONTAL SCROLL BEHAVIOR ---
-  function initScrollBehavior(wrapper) {
-    const scrollContainer = wrapper.querySelector(".products-card");
-    const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
-    const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
-
-    const updateButtons = () => {
-      const isMobile = window.innerWidth < 768;
-      if (isMobile) {
-        leftBtn.style.display = "none";
-        rightBtn.style.display = "none";
-        return;
-      }
-      const scrollLeft = scrollContainer.scrollLeft;
-      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      leftBtn.style.display = scrollLeft <= 10 ? "none" : "block";
-      rightBtn.style.display = scrollLeft >= maxScrollLeft - 10 ? "none" : "block";
-    };
-
-    scrollContainer.addEventListener("scroll", updateButtons);
-    updateButtons();
-
-    rightBtn.addEventListener("click", () => {
-      scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
-    });
-    leftBtn.addEventListener("click", () => {
-      scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
-    });
-  }
-
-
-  // --- PRODUCT CATEGORY RENDERING ---
+ // --- PRODUCT CATEGORY RENDERING ---
   function renderCategories() {
     container.innerHTML = '';
     categories.forEach(({ category, id, products }) => {
@@ -295,9 +216,82 @@ searchInput.addEventListener('input', () => {
     }
   }
 
-  // --- INITIAL RENDERS ---
-  renderCategories();
-  renderSlidePages();
+    // --- HORIZONTAL SCROLL BEHAVIOR ---
+  function initScrollBehavior(wrapper) {
+    const scrollContainer = wrapper.querySelector(".products-card");
+    const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
+    const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
+
+    const updateButtons = () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        leftBtn.style.display = "none";
+        rightBtn.style.display = "none";
+        return;
+      }
+      const scrollLeft = scrollContainer.scrollLeft;
+      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      leftBtn.style.display = scrollLeft <= 10 ? "none" : "block";
+      rightBtn.style.display = scrollLeft >= maxScrollLeft - 10 ? "none" : "block";
+    };
+
+    scrollContainer.addEventListener("scroll", updateButtons);
+    updateButtons();
+
+    rightBtn.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
+    });
+    leftBtn.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+    });
+  }
+
+    // --- SEARCH FUNCTIONALITY ---
+const noResultsMessage = document.getElementById('noResultsMessage');
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase().trim();
+  container.innerHTML = '';
+  let anyMatch = false;
+
+  categories.forEach(({ category, id, products }) => {
+    const matchingProducts = products.filter(product =>
+      product.name.toLowerCase().includes(query)
+    );
+
+    if (matchingProducts.length > 0) {
+      anyMatch = true;
+      const productCards = matchingProducts.map(({ name, image }) => `
+        <div class="card">
+          <img src="${image}" alt="${name}">
+          <p class="product-name">${name}</p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      `).join('');
+
+      const categoryHTML = `
+        <div class="product-category">
+          <div class="section-header category-name-header">
+            <h2>${category.toUpperCase()}</h2>
+          </div>
+          <div class="scroll-wrapper">
+            <div class="products-card">${productCards}</div>
+          </div>
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', categoryHTML);
+    }
+  });
+
+  noResultsMessage.style.display = anyMatch ? 'none' : 'block';
+
+  if (!query) {
+    renderCategories();
+    renderSlidePages();
+    filterProductCategories();
+    noResultsMessage.style.display = 'none';
+  }
+});
 
   // --- SLIDE PAGE NAVIGATION ---
   document.addEventListener('click', e => {
@@ -312,6 +306,10 @@ searchInput.addEventListener('input', () => {
       e.target.closest('.slide-page')?.classList.remove('active');
     }
   });
+
+    // --- INITIAL RENDERS ---
+  renderCategories();
+  renderSlidePages();
 
   // --- RESIZE HANDLER ---
   window.addEventListener("resize", () => {
