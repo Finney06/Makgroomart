@@ -162,7 +162,7 @@ searchInput.addEventListener('input', () => {
   noResultsMessage.style.display = anyMatch ? 'none' : 'block';
 
   if (!query) {
-    renderCategories();
+    filterProductCategories();
   }
 });
 

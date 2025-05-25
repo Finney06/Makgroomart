@@ -103,8 +103,10 @@ const categories = [
     category: "Special Products",
     id: "specialProductsPage",
     products: [
-      { name: "Cocoa Beans/Shells", image: "./assets/images/product-images/cocoa-beans.jpg" },
-      { name: "Cashew Nuts", image: "./assets/images/product-images/Cashew.jpg" },
+      { name: "Cocoa Beans", image: "./assets/images/product-images/cocoa-beans.jpg" },
+      { name: "Cocoa Shells", image: "./assets/images/product-images/cocoa-shells.jpg"},
+      { name: "Cashew Nuts(processed)", image: "./assets/images/product-images/Cashew.jpg" },
+      { name: "Cashew Nuts(Raw)", image: "./assets/images/Cashew-raw.jpg"},
       { name: "Sorghum", image: "./assets/images/sorghum.jpg" },
       { name: "Ginger", image: "./assets/images/ginger.jpg" },
       { name: "Hibiscus", image: "./assets/images/product-images/Hibiscus.jpg" },
