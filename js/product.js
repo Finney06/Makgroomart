@@ -1,14 +1,29 @@
+import categories from './productsData.js';
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Main container for product categories
+  const container = document.getElementById('dynamicProductCategories');
+
+  // Elements for filter functionality
   const filterToggle = document.getElementById("filterToggle");
   const filterOverlay = document.getElementById("filterOverlay");
   const closeBtn = document.getElementById("closeFilterOverlay");
   const pageOverlay = document.getElementById("pageOverlay");
   const chipContainer = document.getElementById("activeFilters");
-  const filterButtons = document.querySelectorAll(".filter-btn");
   const clearAllBtn = document.getElementById("clearAllFilters");
   const filterCountBadge = document.getElementById("filterCountBadge");
+
+  // Element for search functionality
+  const searchInput = document.getElementById('productSearch');
+
+  // Element for filter button list
+  const categoryListContainer = document.getElementById("categoryList");
+
+  // Set for active filters
   const activeFilters = new Set();
 
+
+  // --- FILTER DROPDOWN ---
   function toggleFilterDropdown(forceClose = false) {
     const isActive = filterOverlay.classList.contains("active");
     if (isActive || forceClose) {
@@ -25,84 +40,48 @@ document.addEventListener("DOMContentLoaded", () => {
   filterToggle.addEventListener("click", () => toggleFilterDropdown());
   closeBtn.addEventListener("click", () => toggleFilterDropdown(true));
 
-
+  // --- FILTER BUTTONS CREATION ---
   const filterCategories = [
-  "Cereals",
-  "Legumes",
-  "Tubers",
-  "Flour",
-  "Oil",
-  "Spices",
-  "Grasses",
-  "Feeds",
-  "Fertilizers",
-  "Chemicals",
-  "Animal Farm",
-  "Planting Materials",
-  "Special Products"
-];
+    "Cereals", "Legumes", "Tubers", "Flour", "Oil", "Spices",
+    "Grasses", "Feeds", "Fertilizers", "Chemicals",
+    "Animal Farm", "Planting Materials", "Special Products"
+  ];
 
-const categoryListContainer = document.getElementById("categoryList");
-
-filterCategories.forEach(category => {
-  const button = document.createElement("button");
-  button.className = "filter-btn";
-  button.textContent = category;
-  button.setAttribute("data-category", category.toLowerCase().replace(/\s+/g, "-")); // for filtering
-  categoryListContainer.appendChild(button);
-});
-
-categoryListContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("filter-btn")) {
-    const category = e.target.textContent.trim();
-    const key = category.toLowerCase();
-
-    // Add chip if not already active
-    if (!activeFilters.has(key)) {
-      activeFilters.add(key);
-      createChip(category, key);
-      updateFilterCount();
-      filterProductCategories(); // 🔁 Update product view
-    }
-
-    // Your filter logic here (if any)
-    console.log("Filter by:", category);
-  }
-});
-
-function filterProductCategories() {
-  const allCategorySections = document.querySelectorAll('.product-category');
-  if (activeFilters.size === 0) {
-    allCategorySections.forEach(section => section.style.display = 'block');
-    return;
-  }
-
-  allCategorySections.forEach(section => {
-    const headerText = section.querySelector('.category-name-header h2')?.textContent.toLowerCase();
-    const match = [...activeFilters].some(filter => headerText.includes(filter));
-    section.style.display = match ? 'block' : 'none';
+  filterCategories.forEach(category => {
+    const button = document.createElement("button");
+    button.className = "filter-btn";
+    button.textContent = category;
+    button.setAttribute("data-category", category.toLowerCase().replace(/\s+/g, "-"));
+    categoryListContainer.appendChild(button);
   });
-}
 
+  // --- FILTER BUTTONS EVENT ---
+  categoryListContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("filter-btn")) {
+      const category = e.target.textContent.trim();
+      const key = category.toLowerCase();
+      if (!activeFilters.has(key)) {
+        activeFilters.add(key);
+        createChip(category, key);
+        updateFilterCount();
+        filterProductCategories();
+      }
+    }
+  });
 
-
-  // Add filter chip
+  // --- Filter Chip Creation ---
   function createChip(label, key) {
     const chip = document.createElement("div");
     chip.classList.add("chip");
     chip.dataset.category = key;
-    chip.innerHTML = `
-      ${label}
-      <button class="remove-chip" title="Remove">&times;</button>
-    `;
+    chip.innerHTML = `${label} <button class="remove-chip" title="Remove">&times;</button>`;
     chipContainer.insertBefore(chip, clearAllBtn);
 
     chip.querySelector(".remove-chip").addEventListener("click", () => {
       chip.remove();
       activeFilters.delete(key);
       updateFilterCount();
-      filterProductCategories(); // 🔁 Update product view
-
+      filterProductCategories();
     });
   }
 
@@ -110,8 +89,7 @@ function filterProductCategories() {
     chipContainer.querySelectorAll(".chip").forEach(chip => chip.remove());
     activeFilters.clear();
     updateFilterCount();
-    filterProductCategories(); // 🔁 Update product view
-
+    filterProductCategories();
   });
 
   function updateFilterCount() {
@@ -128,26 +106,86 @@ function filterProductCategories() {
     }
   }
 
-  // Horizontal scroll behavior
-  document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
+  // --- FILTERING PRODUCT CATEGORIES ---
+  function filterProductCategories() {
+    const allCategorySections = document.querySelectorAll('.product-category');
+    if (activeFilters.size === 0) {
+      allCategorySections.forEach(section => section.style.display = 'block');
+      return;
+    }
+    allCategorySections.forEach(section => {
+      const headerText = section.querySelector('.category-name-header h2')?.textContent.toLowerCase();
+      const match = [...activeFilters].some(filter => headerText.includes(filter));
+      section.style.display = match ? 'block' : 'none';
+    });
+  }
+
+  // --- SEARCH FUNCTIONALITY ---
+
+  const noResultsMessage = document.getElementById('noResultsMessage');
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase().trim();
+  container.innerHTML = '';
+  let anyMatch = false;
+
+  categories.forEach(({ category, id, products }) => {
+    const matchingProducts = products.filter(product =>
+      product.name.toLowerCase().includes(query)
+    );
+
+    if (matchingProducts.length > 0) {
+      anyMatch = true;
+      const productCards = matchingProducts.map(({ name, image }) => `
+        <div class="card">
+          <img src="${image}" alt="${name}">
+          <p class="product-name">${name}</p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      `).join('');
+
+      const categoryHTML = `
+        <div class="product-category">
+          <div class="section-header category-name-header">
+            <h2>${category.toUpperCase()}</h2>
+          </div>
+          <div class="scroll-wrapper">
+            <div class="products-card">${productCards}</div>
+          </div>
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', categoryHTML);
+    }
+  });
+
+  noResultsMessage.style.display = anyMatch ? 'none' : 'block';
+
+  if (!query) {
+    renderCategories();
+  }
+});
+
+
+
+  // --- HORIZONTAL SCROLL BEHAVIOR ---
+  function initScrollBehavior(wrapper) {
     const scrollContainer = wrapper.querySelector(".products-card");
     const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
     const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
 
-const updateButtons = () => {
-  const isMobile = window.innerWidth < 768;
-  if (isMobile) {
-    leftBtn.style.display = "none";
-    rightBtn.style.display = "none";
-    return;
-  }
-
-  const scrollLeft = scrollContainer.scrollLeft;
-  const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-  leftBtn.style.display = scrollLeft <= 10 ? "none" : "block";
-  rightBtn.style.display = scrollLeft >= maxScrollLeft - 10 ? "none" : "block";
-};
-
+    const updateButtons = () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        leftBtn.style.display = "none";
+        rightBtn.style.display = "none";
+        return;
+      }
+      const scrollLeft = scrollContainer.scrollLeft;
+      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      leftBtn.style.display = scrollLeft <= 10 ? "none" : "block";
+      rightBtn.style.display = scrollLeft >= maxScrollLeft - 10 ? "none" : "block";
+    };
 
     scrollContainer.addEventListener("scroll", updateButtons);
     updateButtons();
@@ -158,116 +196,125 @@ const updateButtons = () => {
     leftBtn.addEventListener("click", () => {
       scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
     });
+  }
+
+
+  // --- PRODUCT CATEGORY RENDERING ---
+  function renderCategories() {
+    container.innerHTML = '';
+    categories.forEach(({ category, id, products }) => {
+      const previewCards = products.slice(0, 6).map(({ name, image }) => `
+        <div class="card">
+          <img src="${image}" alt="${name}">
+          <p class="product-name">${name}</p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      `).join('');
+
+      const categoryHTML = `
+        <div class="product-category">
+          <div class="section-header category-name-header">
+            <h2>${category.toUpperCase()}</h2>
+            <a href="#" class="see-more-btn" data-target="${id}">See More</a>
+          </div>
+          <div class="scroll-wrapper">
+            <button class="scroll-arrow scroll-left"><i class="fas fa-chevron-left"></i></button>
+            <div class="products-card">${previewCards}</div>
+            <button class="scroll-arrow scroll-right"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', categoryHTML);
+      const wrapper = container.lastElementChild.querySelector(".scroll-wrapper");
+      adjustProductLayout(wrapper);
+      initScrollBehavior(wrapper);
+    });
+  }
+
+  // --- SLIDE PAGES RENDERING ---
+  function renderSlidePages() {
+    categories.forEach(({ id, category, products }) => {
+      const slidePage = document.createElement("div");
+      slidePage.className = "slide-page";
+      slidePage.id = id;
+
+      const productCards = products.map(({ name, image }) => `
+        <div class="card">
+          <img src="${image}" alt="${name}">
+          <p class="product-name">${name}</p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      `).join('');
+
+      slidePage.innerHTML = `
+        <div class="slide-header">
+          <button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button>
+          <h2 class="slide-title">${category}</h2>
+          <div class="cart-wrapper">
+            <a href="cart.html" class="cart-link">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
+        </div>
+        <div class="scroll-wrapper">
+          <button class="scroll-arrow scroll-left"><i class="fas fa-chevron-left"></i></button>
+          <div class="products-card">${productCards}</div>
+          <button class="scroll-arrow scroll-right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      `;
+
+      document.body.appendChild(slidePage);
+      const wrapper = slidePage.querySelector(".scroll-wrapper");
+      adjustProductLayout(wrapper);
+      initScrollBehavior(wrapper);
+    });
+  }
+
+  // --- LAYOUT ADJUSTMENT FUNCTION ---
+  function adjustProductLayout(wrapper) {
+    const scrollContainer = wrapper.querySelector(".products-card");
+    const productCards = scrollContainer.querySelectorAll(".card");
+    const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
+    const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      scrollContainer.classList.remove("no-scroll");
+      leftBtn.style.display = "none";
+      rightBtn.style.display = "none";
+    } else if (productCards.length <= 4) {
+      scrollContainer.classList.add("no-scroll");
+      leftBtn.style.display = "none";
+      rightBtn.style.display = "none";
+    } else {
+      scrollContainer.classList.remove("no-scroll");
+      leftBtn.style.display = "block";
+      rightBtn.style.display = "block";
+    }
+  }
+
+  // --- INITIAL RENDERS ---
+  renderCategories();
+  renderSlidePages();
+
+  // --- SLIDE PAGE NAVIGATION ---
+  document.addEventListener('click', e => {
+    const seeMoreBtn = e.target.closest('.see-more-btn');
+    if (seeMoreBtn) {
+      e.preventDefault();
+      const targetId = seeMoreBtn.dataset.target;
+      document.getElementById(targetId)?.classList.add('active');
+    }
+
+    if (e.target.closest('.back-to-products')) {
+      e.target.closest('.slide-page')?.classList.remove('active');
+    }
   });
-});
 
-import categories from './productsData.js';
-
-const container = document.getElementById('dynamicProductCategories');
-
-categories.forEach(({ category, id, products }) => {
-  const previewCards = products.slice(0, 6).map(({ name, image }) => `
-    <div class="card">
-      <img src="${image}" alt="${name}">
-      <p class="product-name">${name}</p>
-      <button class="add-to-cart-btn">Add to Cart</button>
-    </div>
-  `).join('');
-
-  const categoryHTML = `
-    <div class="product-category">
-      <div class="section-header category-name-header">
-        <h2>${category.toUpperCase()}</h2>
-        <a href="#" class="see-more-btn" data-target="${id}">See More</a>
-      </div>
-      <div class="scroll-wrapper">
-        <button class="scroll-arrow scroll-left"><i class="fas fa-chevron-left"></i></button>
-        <div class="products-card">${previewCards}</div>
-        <button class="scroll-arrow scroll-right"><i class="fas fa-chevron-right"></i></button>
-      </div>
-    </div>
-  `;
-
-  container.insertAdjacentHTML('beforeend', categoryHTML);
-  const wrapper = container.lastElementChild.querySelector(".scroll-wrapper");
-  adjustProductLayout(wrapper);
-});
-
-// Slide Pages
-categories.forEach(({ id, category, products }) => {
-  const slidePage = document.createElement("div");
-  slidePage.className = "slide-page";
-  slidePage.id = id;
-
-  const productCards = products.map(({ name, image }) => `
-    <div class="card">
-      <img src="${image}" alt="${name}">
-      <p class="product-name">${name}</p>
-      <button class="add-to-cart-btn">Add to Cart</button>
-    </div>
-  `).join('');
-
-  slidePage.innerHTML = `
-    <div class="slide-header">
-      <button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button>
-      <h2 class="slide-title">${category}</h2>
-      <div class="cart-wrapper">
-        <a href="cart.html" class="cart-link">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="cart-count">0</span>
-        </a>
-      </div>
-    </div>
-    <div class="scroll-wrapper">
-      <button class="scroll-arrow scroll-left"><i class="fas fa-chevron-left"></i></button>
-      <div class="products-card">${productCards}</div>
-      <button class="scroll-arrow scroll-right"><i class="fas fa-chevron-right"></i></button>
-    </div>
-  `;
-
-  document.body.appendChild(slidePage);
-  const wrapper = slidePage.querySelector('.scroll-wrapper');
-  adjustProductLayout(wrapper);
-});
-
-function adjustProductLayout(wrapper) {
-  const scrollContainer = wrapper.querySelector(".products-card");
-  const productCards = scrollContainer.querySelectorAll(".card");
-  const leftBtn = wrapper.querySelector(".scroll-arrow.scroll-left");
-  const rightBtn = wrapper.querySelector(".scroll-arrow.scroll-right");
-  const isMobile = window.innerWidth < 768;
-
-if (isMobile) {
-  scrollContainer.classList.remove("no-scroll"); // Allow swipe scroll
-  leftBtn.style.display = "none";
-  rightBtn.style.display = "none";
-} else if (productCards.length <= 4) {
-  scrollContainer.classList.add("no-scroll"); // Optional: disable arrows & scroll if few items
-  leftBtn.style.display = "none";
-  rightBtn.style.display = "none";
-} else {
-  scrollContainer.classList.remove("no-scroll");
-  leftBtn.style.display = "block";
-  rightBtn.style.display = "block";
-}
-}
-
-// Slide navigation
-document.addEventListener('click', e => {
-  const seeMoreBtn = e.target.closest('.see-more-btn');
-  if (seeMoreBtn) {
-    e.preventDefault();
-    const targetId = seeMoreBtn.dataset.target;
-    document.getElementById(targetId).classList.add('active');
-  }
-
-  if (e.target.closest('.back-to-products')) {
-    e.target.closest('.slide-page').classList.remove('active');
-  }
-});
-
-window.addEventListener("resize", () => {
-  document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
-    adjustProductLayout(wrapper);
+  // --- RESIZE HANDLER ---
+  window.addEventListener("resize", () => {
+    document.querySelectorAll(".scroll-wrapper").forEach(wrapper => adjustProductLayout(wrapper));
   });
 });
