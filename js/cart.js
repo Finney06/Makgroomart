@@ -51,6 +51,13 @@ function renderCart() {
         document.querySelectorAll(".cart-count").forEach(badge => {
             badge.textContent = cart.length;
         });
+
+          // 👇 Update checkout button count
+const checkoutCount = document.getElementById("checkoutCount");
+  if (checkoutCount) {
+    const count = cart.length;
+    checkoutCount.textContent = `${count} ${count === 1 ? "item" : "items"}`;
+  }
     }
 
     // Remove item
@@ -69,7 +76,15 @@ function renderCart() {
         if (cart.length === 0) return;
 
         // Render cart summary
-        checkoutSummary.innerHTML = cart.map(item => `<li>${item.name}</li>`).join("");
+checkoutSummary.innerHTML = cart
+  .map(item => `
+    <li>
+      <img src="${item.image}" alt="${item.name}" />
+      <span>${item.name}</span>
+    </li>
+  `)
+  .join("");
+
         checkoutPanel.classList.add("active");
     });
 
@@ -83,18 +98,32 @@ function renderCart() {
 });
 
 
-    document.querySelector(".whatsapp-btn").addEventListener("click", () => {
-        if (cart.length === 0) return;
+document.querySelector(".whatsapp-btn-modern").addEventListener("click", () => {
+  if (cart.length === 0) return;
 
-        const businessPhone = "2348125844055"; // ✅ Replace with your number (Nigeria format)
-        const productList = cart.map(item => `- ${item.name}`).join("\n");
-        const message = `Hello! I’d like to inquire/order the following products:\n\n${productList}\n\nPlease let me know the price and availability.`;
+  const name = document.getElementById("userName").value.trim();
+  const delivery = document.getElementById("deliveryOption").value.trim();
 
-        const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(message)}`;
-        window.open(url, "_blank");
-        checkoutPanel.classList.remove("active");
+  const productList = cart
+    .map((item, i) => `${i + 1}. ${item.name} — ${item.quantity || 1} bag${item.quantity > 1 ? "s" : ""}`)
+    .join("\n");
 
-    });
+  const message = `🛒 Hello! I'd like to place an order from your website.\n
+👤 Name: ${name || "Not provided"}\n🚚 Delivery Preference: ${delivery || "Not selected"}\n
+Here are the items I’m ordering:
+-------------------------------------
+${productList}
+-------------------------------------
+
+Please provide the total price, payment options, and estimated delivery time.\n
+Thank you!`;
+
+  const businessPhone = "2348125844055";
+  const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+  checkoutPanel.classList.remove("active");
+});
+
 
 
     // Close panel

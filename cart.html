@@ -66,36 +66,57 @@
         </div>
     </header>
 
-    <main class="cart-container">
-        <h1>Your Cart</h1>
-        <div id="cartItems" class="cart-items">
-            <!-- JS will render cart items here -->
-             
-        </div>
-<div class="cart-actions">
-    <button id="clearCartBtn" class="text-clear-btn">Remove All</button>
-</div>
+<main class="cart-container">
+  <h1>Your Cart</h1>
 
-        <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+  <div class="cart-scroll-area">
+    <div id="cartItems" class="cart-items">
+      <!-- JS will render cart items here -->
+    </div>
+
+    <div class="cart-actions">
+      <button id="clearCartBtn" class="text-clear-btn">Remove All</button>
+    </div>
+  </div>
+
+  <!-- Fixed button -->
+  <div class="fixed-checkout">
+   <button id="checkoutBtn" class="checkout-btn">
+  Proceed to Checkout (<span id="checkoutCount">0 items</span>)
+</button>
+  </div>
+</main>
 
         <!-- Slide-up panel -->
-        <div id="checkoutPanel" class="checkout-panel">
-            <div class="panel-header">
-                <div class="header-text">
-                    <h2>READY TO CHECKOUT?</h2>
-                <p>Kindly confirm your order before sending your message!</p>
-                </div>
-                <button id="closeCheckout"><i class="fa-solid fa-circle-xmark x-mark"></i>
-                </button>
-            </div>
+<div id="checkoutPanel" class="checkout-panel modern">
+  <div class="panel-header-modern">
+    <h2><i class="fas fa-receipt"></i> Confirm Your Order</h2>
+    <button id="closeCheckout" class="close-checkout">
+      <i class="fa-solid fa-circle-xmark x-mark"></i>
+    </button>
+  </div>
 
-            <!-- Selected items summary -->
-            <ul id="checkoutSummary" class="checkout-summary"></ul>
+  <p class="checkout-instruction">
+    Please review your selected items below. When you're ready, place your order via WhatsApp.
+  </p>
 
-            <button class="whatsapp-btn">Place Order via WhatsApp</button>
-        </div>
+  <div class="checkout-user-info">
+  <input type="text" id="userName" placeholder="Your name" />
+  <select id="deliveryOption">
+    <option value="">Select Delivery Preference</option>
+    <option value="Pickup at Store">Pickup at Store</option>
+    <option value="Doorstep Delivery">Doorstep Delivery</option>
+  </select>
+</div>
 
-    </main>
+  <ul id="checkoutSummary" class="checkout-summary-modern"></ul>
+
+  <button class="whatsapp-btn-modern">
+    <i class="fab fa-whatsapp"></i> Place Order via WhatsApp
+  </button>
+</div>
+
+
 </body>
 
 </html>
