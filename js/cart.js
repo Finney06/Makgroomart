@@ -7,29 +7,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-    function renderCart() {
-        cartContainer.innerHTML = "";
+function renderCart() {
+    const clearCartBtn = document.getElementById("clearCartBtn");
+    cartContainer.innerHTML = "";
 
-        if (cart.length === 0) {
-            cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-            checkoutBtn.style.display = "none";
-            return;
-        }
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        checkoutBtn.style.display = "none";
 
-        cart.forEach((item, index) => {
-            const card = document.createElement("div");
-            card.classList.add("cart-item");
-            card.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" />
-        <p>${item.name}</p>
-        <button class="remove-btn" data-index="${index}">&times;</button>
-      `;
-            cartContainer.appendChild(card);
-        });
-
+        // ✅ Hide the "Remove All" button when the cart is empty
+        if (clearCartBtn) clearCartBtn.style.display = "none";
         updateCartCount();
-        checkoutBtn.style.display = "block";
+        return;
     }
+
+    // ✅ Render each cart item
+    cart.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.classList.add("cart-item");
+        card.innerHTML = `
+            <div class="item-image">
+                <img src="${item.image}" alt="${item.name}" />
+            </div>
+            <div class="item-details">
+                <h3>${item.name}</h3>
+                <p>Everyday vegetables, fresh and ready to use</p>
+                <div class="item-status">IN STOCK</div>
+            </div>
+            <button class="remove-btn" data-index="${index}">&times;</button>
+        `;
+        cartContainer.appendChild(card);
+    });
+
+    // ✅ Show the "Remove All" and Checkout buttons
+    if (clearCartBtn) clearCartBtn.style.display = "inline";
+    checkoutBtn.style.display = "block";
+
+    updateCartCount();
+}
+
 
     function updateCartCount() {
         document.querySelectorAll(".cart-count").forEach(badge => {
@@ -44,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cart.splice(index, 1);
             localStorage.setItem("cartItems", JSON.stringify(cart));
             renderCart();
+            updateCartCount();
         }
     });
 
@@ -55,6 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
         checkoutSummary.innerHTML = cart.map(item => `<li>${item.name}</li>`).join("");
         checkoutPanel.classList.add("active");
     });
+
+    document.getElementById("clearCartBtn").addEventListener("click", () => {
+    if (confirm("Are you sure you want to remove all items from the cart?")) {
+        cart = [];
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+        renderCart();
+        updateCartCount();
+    }
+});
+
 
     document.querySelector(".whatsapp-btn").addEventListener("click", () => {
         if (cart.length === 0) return;

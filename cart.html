@@ -1,41 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Cart</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cart.css" />
-  <script defer src="js/cart.js" type="module"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon.png" />
+    <title>Your Cart</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/2ba0cacefb.js" crossorigin="anonymous"></script>
+
+    <!-- STYLE  -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/product.css">
+        <link rel="stylesheet" href="css/cart.css" />
+
+ <!-- JavaScript -->
+    <script defer src="js/main.js"></script>
+    <script defer src="js/product.js" type="module"></script>
+    <script defer src="js/cart.js" type="module"></script>
+
+    <style>
+        /* SCROLL UP BUTTON */
+
+        .scroll-to-top-button {
+            position: fixed;
+            bottom: 20px;
+            right: 35px;
+            background-color: #00704a;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        .scroll-to-top-button i {
+            transform: translateY(1px);
+        }
+
+        .scroll-to-top-button.show {
+            opacity: 1;
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <a href="index.html" class="logo">MakgroMart</a>
-    <div class="cart-wrapper">
-      <i class="fas fa-shopping-cart"></i>
-      <span class="cart-count">0</span>
-    </div>
-  </header>
 
-  <main class="cart-container">
-    <h1>Your Cart</h1>
-    <div id="cartItems" class="cart-items">
-      <!-- JS will render cart items here -->
-    </div>
+    <header class="cart-header">
+       <a href="Product.html"><button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button></a> 
+         <a class="cart-logo" href="index.html"><img class="logo logo-img" src="assets/logo/logo.png" alt="Logo" /></a>
+        <div class="cart-wrapper">
+            <a href="cart.html" class="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
 
-    <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+    <main class="cart-container">
+        <h1>Your Cart</h1>
+        <div id="cartItems" class="cart-items">
+            <!-- JS will render cart items here -->
+             
+        </div>
+<div class="cart-actions">
+    <button id="clearCartBtn" class="text-clear-btn">Remove All</button>
+</div>
 
-    <!-- Slide-up panel -->
-    <div id="checkoutPanel" class="checkout-panel">
-      <div class="panel-header">
-        <h2>Checkout Preview</h2>
-        <button id="closeCheckout">&times;</button>
-      </div>
-      <div id="checkoutSummary" class="checkout-summary">
-        <!-- Selected items summary -->
-      </div>
-      <button class="whatsapp-btn">Place Order via WhatsApp</button>
-    </div>
-  </main>
+        <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+
+        <!-- Slide-up panel -->
+        <div id="checkoutPanel" class="checkout-panel">
+            <div class="panel-header">
+                <h2>Checkout Preview</h2>
+                <button id="closeCheckout">&times;</button>
+            </div>
+
+            <!-- Selected items summary -->
+            <ul id="checkoutSummary" class="checkout-summary"></ul>
+
+            <button class="whatsapp-btn">Place Order via WhatsApp</button>
+        </div>
+
+    </main>
 </body>
+
 </html>

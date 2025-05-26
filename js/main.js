@@ -29,9 +29,9 @@ nextBtn.onclick = function () {
   moveSlider('next')
 }
 
-let autoSlide = setInterval(() => {
-  moveSlider('next');
-}, 6000);
+// let autoSlide = setInterval(() => {
+//   moveSlider('next');
+// }, 6000);
 
 
 // Function for prev button 
@@ -39,12 +39,12 @@ prevBtn.onclick = function () {
   moveSlider('prev')
 }
 
-slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
-slider.addEventListener('mouseleave', () => {
-    autoSlide = setInterval(() => {
-        moveSlider('next');
-    }, 6000);
-});
+// slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
+// slider.addEventListener('mouseleave', () => {
+//     autoSlide = setInterval(() => {
+//         moveSlider('next');
+//     }, 6000);
+// });
 
 function moveSlider(direction) {
   let sliderItems = sliderList.querySelectorAll('.item')

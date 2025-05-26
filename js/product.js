@@ -206,27 +206,55 @@ function attachCartListeners() {
   buttons.forEach(btn => {
     const card = btn.closest('.card');
     const name = card.querySelector('.product-name').textContent;
-    const image = card.querySelector('img').getAttribute('src');
+    const image = card.querySelector('img').src;
 
-    const isInCart = cart.some(item => item.name === name);
-    btn.textContent = isInCart ? 'Remove from Cart' : 'Add to Cart';
+    // Set button state based on cart
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const inCart = cartItems.some(item => item.name === name);
+
+    if (inCart) {
+      btn.textContent = "In Cart";
+      btn.classList.add("in-cart");
+    } else {
+      btn.textContent = "Add to Cart";
+      btn.classList.remove("in-cart");
+    }
 
     btn.addEventListener('click', () => {
-      const index = cart.findIndex(item => item.name === name);
+      cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      const index = cartItems.findIndex(item => item.name === name);
+
       if (index > -1) {
-        cart.splice(index, 1); // Remove
-        btn.textContent = 'Add to Cart';
+        // Remove from cart
+        cartItems.splice(index, 1);
+        btn.textContent = "Add to Cart";
+        btn.classList.remove("in-cart");
       } else {
-        cart.push({ name, image }); // Add
-        btn.textContent = 'Remove from Cart';
+        // Add to cart
+        cartItems.push({ name, image });
+        btn.textContent = "In Cart";
+        btn.classList.add("in-cart");
+        btn.classList.add("show-tooltip");
+
+setTimeout(() => {
+  btn.classList.remove("show-tooltip");
+}, 3000);
       }
 
-      localStorage.setItem('cartItems', JSON.stringify(cart));
-      updateCartCountDisplay();
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      updateCartCount();
     });
   });
 }
 
+
+function updateCartCount() {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  document.querySelectorAll(".cart-count").forEach(badge => {
+    badge.textContent = cartItems.length;
+  });
+}
 
   // --- LAYOUT ADJUSTMENT FUNCTION ---
   function adjustProductLayout(wrapper) {
@@ -343,10 +371,10 @@ searchInput.addEventListener('input', () => {
   });
 
     // --- INITIAL RENDERS ---
-  renderCategories();
-  renderSlidePages();
-  attachCartListeners();
-updateCartCountDisplay();
+renderCategories();
+renderSlidePages();
+attachCartListeners();
+updateCartCount(); // 💡 Ensure it's triggered on page load
 
   // --- RESIZE HANDLER ---
   window.addEventListener("resize", () => {

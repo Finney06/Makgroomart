@@ -496,6 +496,34 @@ header {
   display: none !important;
 }
 
+.add-to-cart-btn {
+  position: relative;
+}
+
+
+.add-to-cart-btn.in-cart::after {
+  content: "Click to remove";
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #444;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.add-to-cart-btn.in-cart:hover::after {
+  opacity: 1;
+}
+
+
+
 
 
 /* Only show on larger screens */
@@ -518,6 +546,26 @@ header {
     margin: 0 1rem 0;
     gap: 1rem;
   }
+
+   .add-to-cart-btn.in-cart::after {
+    display: none;
+  }
+
+.add-to-cart-btn.show-tooltip::after {
+  content: "Tap again to remove";
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.add-to-cart-btn::after {
+  content: "";
+  opacity: 0;
+}
+
 }
 
 @media screen and (max-width: 650px) {
