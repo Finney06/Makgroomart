@@ -25,7 +25,7 @@
 body {
   font-family: var(--font-family-1);
   background: var(--body-background);
-  font-size: 1.6rem;
+  font-size: clamp(1.3rem, 4vw, 1.5rem);
 }
 
 header {
@@ -33,62 +33,60 @@ header {
 }
 
 .cart-header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    background: var(--product-background);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background: var(--product-background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 10;
 }
 
 .cart-header .back-to-products {
-    background: none;
-    border: none;
-    font-size: 1.6rem;
-    color: var(--green);
-    cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--green);
+  cursor: pointer;
 }
 
 .cart-header .back-to-products {
-    background: none;
-    border: none;
-    font-size: 1.6rem;
-    color: var(--green);
-    cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--green);
+  cursor: pointer;
 }
 
 .logo-img {
-    width: 6rem;
-    margin: -2rem;
+  width: 6rem;
+  margin: -2rem;
 }
 
 .cart-header .cart-logo {
-    flex-grow: 1;
-    text-align: center;
-    margin: 1.75rem;
+  flex-grow: 1;
+  text-align: center;
+  margin: 1.75rem;
 }
 
 .cart-header .cart-wrapper {
-    right: 25px;
-    top: 15px;
-    position: absolute;
+  right: 25px;
+  top: 15px;
+  position: absolute;
 }
-
-
 
 .cart-container {
   padding: 2rem;
 }
 
 .cart-container h1 {
-    color: var(--green);
-    font-size: 5.5rem;
+  color: var(--green);
+  font-size: clamp(3.2rem, 8vw, 4rem);
 }
 
 .cart-item {
@@ -97,10 +95,10 @@ header {
   justify-content: space-between;
   background: var(--product-background);
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  gap: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 1.6rem;
+  margin-bottom: 1.6rem;
+  gap: 1.6rem;
 }
 
 .cart-item .item-image {
@@ -123,24 +121,25 @@ header {
 
 .cart-item .item-details h3 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 4vw, 1.8rem);
   font-weight: bold;
   color: var(--black);
 }
 
 .cart-item .item-details p {
   margin: 0.25rem 0 0;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
   color: #666;
 }
 
 .cart-item .item-status {
   font-size: 1.2rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.4rem);
   margin-top: 4px;
   color: #333;
   font-weight: 600;
 }
-
 
 .cart-item .remove-btn {
   background: red;
@@ -154,7 +153,6 @@ header {
   margin-left: auto;
 }
 
-
 .cart-actions {
   display: flex;
   justify-content: flex-end; /* change to flex-start for left alignment */
@@ -165,7 +163,7 @@ header {
   background: none;
   border: none;
   color: var(--red);
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
   font-family: var(--font-family-1);
   text-decoration: underline;
   cursor: pointer;
@@ -176,31 +174,18 @@ header {
   color: var(--red-hover);
 }
 
-
 .checkout-btn {
   display: block;
   margin: 2rem auto;
-  padding: 1rem 2rem;
+  padding: 1.6rem 3.2rem;
   background: var(--filter-button-color);
-  color: v;
+  color: var(--white);
   font-family: var(--font-family-1);
   border: none;
   font-size: 1.76rem;
+  font-size: clamp(1.46rem, 3.5vw, 1.76rem);
   border-radius: 8px;
   cursor: pointer;
-}
-
-.checkout-panel {
-  position: fixed;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  background: var(--white);
-  padding: 2rem;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
-  transition: bottom 0.3s ease;
-  z-index: 1000;
-  border-radius: 20px 20px 0 0;
 }
 
 .checkout-panel.active {
@@ -212,9 +197,11 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+.panel-header h2 {
+    font-size: clamp(1.6rem, 5vw, 3rem);
+}
 .panel-header button {
-  font-size: 2.4rem;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
   background: none;
   border: none;
   cursor: pointer;
@@ -225,14 +212,15 @@ header {
 }
 
 .whatsapp-btn {
-  background: var(--light-green);
+  background: #25d366;
   color: white;
   padding: 1rem;
   width: 100%;
   border: none;
-  font-size: 1.1rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
   margin-top: 1rem;
   border-radius: 8px;
+  font-family: var(--font-family-1);
   cursor: pointer;
 }
 
@@ -253,11 +241,13 @@ header {
   bottom: -100%;
   left: 0;
   width: 100%;
-  background: #fff;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
-  padding: 1rem;
+  background: var(--body-background);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  padding: 3.2rem;
   transition: bottom 0.3s ease;
-  z-index: 9999;
+  z-index: 1000;
+  border-top: 10px solid var(--green);
+  border-radius: 20px 20px 0 0;
 }
 
 .checkout-panel.active {
@@ -275,9 +265,6 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
-
-
-
 @media screen and (max-width: 600px) {
   .card {
     width: 100%;
@@ -293,13 +280,3 @@ header {
     padding: 5px 10px;
   }
 }
-
-@media screen and (max-width: 500px) {
-  /* .checkout-panel {
-    width: 100% !important;
-    bottom: 0 !important;
-    border-radius: 12px 12px 0 0;
-  } */
-  
-}
-
