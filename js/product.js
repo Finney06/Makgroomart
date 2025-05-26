@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set for active filters
   const activeFilters = new Set();
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 function updateCartCountDisplay() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  document.querySelectorAll(".cart-count").forEach(el => {
-    el.textContent = cart.length;
-  });
+  const cartCountElements = document.querySelectorAll('.cart-count');
+  cartCountElements.forEach(el => el.textContent = cart.length);
 }
 
   // --- FILTER DROPDOWN ---
@@ -199,33 +199,37 @@ function updateCartCountDisplay() {
     });
   }
 
-  // Global click listener for all "Add to Cart" buttons
-document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".add-to-cart-btn");
-  if (!btn) return;
+function attachCartListeners() {
+  const buttons = document.querySelectorAll('.add-to-cart-btn');
 
-  const card = btn.closest(".card");
-  const name = card.querySelector(".product-name")?.textContent?.trim();
-  const image = card.querySelector("img")?.src;
+  buttons.forEach(btn => {
+    const card = btn.closest('.card');
+    const name = card.querySelector('.product-name').textContent;
+    const image = card.querySelector('img').getAttribute('src');
 
-  if (!name || !image) return;
+    // Initial state check
+    if (cart.some(item => item.name === name)) {
+      btn.textContent = 'Remove from Cart';
+    }
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    btn.addEventListener('click', () => {
+      const isInCart = cart.some(item => item.name === name);
 
-  // Prevent duplicate entries
-  const exists = cart.find(item => item.name === name);
-  if (exists) {
-    alert("This product is already in your cart.");
-    return;
-  }
+      if (isInCart) {
+        // Remove from cart
+        cart = cart.filter(item => item.name !== name);
+        btn.textContent = 'Add to Cart';
+      } else {
+        // Add to cart
+        cart.push({ name, image });
+        btn.textContent = 'Remove from Cart';
+      }
 
-  cart.push({ name, image });
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCountDisplay();
-
-  btn.textContent = "Added ✓";
-  btn.disabled = true;
-});
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCountDisplay();
+    });
+  });
+}
 
   // --- LAYOUT ADJUSTMENT FUNCTION ---
   function adjustProductLayout(wrapper) {
@@ -344,7 +348,7 @@ searchInput.addEventListener('input', () => {
     // --- INITIAL RENDERS ---
   renderCategories();
   renderSlidePages();
-  updateCartCountDisplay();
+  attachCartListeners();
 
   // --- RESIZE HANDLER ---
   window.addEventListener("resize", () => {
