@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <script defer src="js/cart.js" type="module"></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">MakgroMart</a>
+    <div class="cart-wrapper">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span>
+    </div>
+  </header>
+
+  <main class="cart-container">
+    <h1>Your Cart</h1>
+    <div id="cartItems" class="cart-items">
+      <!-- JS will render cart items here -->
+    </div>
+
+    <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+
+    <!-- Slide-up panel -->
+    <div id="checkoutPanel" class="checkout-panel">
+      <div class="panel-header">
+        <h2>Checkout Preview</h2>
+        <button id="closeCheckout">&times;</button>
+      </div>
+      <div id="checkoutSummary" class="checkout-summary">
+        <!-- Selected items summary -->
+      </div>
+      <button class="whatsapp-btn">Place Order via WhatsApp</button>
+    </div>
+  </main>
+</body>
+</html>

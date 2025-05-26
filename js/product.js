@@ -22,12 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set for active filters
   const activeFilters = new Set();
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 function updateCartCountDisplay() {
-  const cartCountElements = document.querySelectorAll('.cart-count');
-  cartCountElements.forEach(el => el.textContent = cart.length);
+  document.querySelectorAll(".cart-count").forEach(span => {
+    span.textContent = cart.length;
+  });
 }
+
 
   // --- FILTER DROPDOWN ---
   function toggleFilterDropdown(forceClose = false) {
@@ -207,29 +208,25 @@ function attachCartListeners() {
     const name = card.querySelector('.product-name').textContent;
     const image = card.querySelector('img').getAttribute('src');
 
-    // Initial state check
-    if (cart.some(item => item.name === name)) {
-      btn.textContent = 'Remove from Cart';
-    }
+    const isInCart = cart.some(item => item.name === name);
+    btn.textContent = isInCart ? 'Remove from Cart' : 'Add to Cart';
 
     btn.addEventListener('click', () => {
-      const isInCart = cart.some(item => item.name === name);
-
-      if (isInCart) {
-        // Remove from cart
-        cart = cart.filter(item => item.name !== name);
+      const index = cart.findIndex(item => item.name === name);
+      if (index > -1) {
+        cart.splice(index, 1); // Remove
         btn.textContent = 'Add to Cart';
       } else {
-        // Add to cart
-        cart.push({ name, image });
+        cart.push({ name, image }); // Add
         btn.textContent = 'Remove from Cart';
       }
 
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem('cartItems', JSON.stringify(cart));
       updateCartCountDisplay();
     });
   });
 }
+
 
   // --- LAYOUT ADJUSTMENT FUNCTION ---
   function adjustProductLayout(wrapper) {
@@ -349,6 +346,7 @@ searchInput.addEventListener('input', () => {
   renderCategories();
   renderSlidePages();
   attachCartListeners();
+updateCartCountDisplay();
 
   // --- RESIZE HANDLER ---
   window.addEventListener("resize", () => {
