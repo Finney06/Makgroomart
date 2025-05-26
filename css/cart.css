@@ -193,18 +193,28 @@ header {
 }
 
 .panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
+
+.panel-header .header-text {
+  text-align: center;
+}
+
 .panel-header h2 {
     font-size: clamp(1.6rem, 5vw, 3rem);
-}
+  }
+
 .panel-header button {
   font-size: clamp(1.8rem, 5vw, 2.4rem);
   background: none;
   border: none;
   cursor: pointer;
+  top: 0;
+  right: 0;
+  position: absolute;
 }
 
 .checkout-summary {
@@ -263,6 +273,10 @@ header {
 .checkout-summary li {
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
+}
+
+.x-mark {
+  color: var(--green);
 }
 
 @media screen and (max-width: 600px) {

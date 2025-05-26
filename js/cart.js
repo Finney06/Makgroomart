@@ -31,7 +31,7 @@ function renderCart() {
             </div>
             <div class="item-details">
                 <h3>${item.name}</h3>
-                <p>Everyday vegetables, fresh and ready to use</p>
+                <p>${item.description || "No description available"}</p>
                 <div class="item-status">IN STOCK</div>
             </div>
             <button class="remove-btn" data-index="${index}">&times;</button>

@@ -23,11 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const activeFilters = new Set();
 
 let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-function updateCartCountDisplay() {
-  document.querySelectorAll(".cart-count").forEach(span => {
-    span.textContent = cart.length;
-  });
-}
 
 
   // --- FILTER DROPDOWN ---
@@ -139,6 +134,15 @@ function updateCartCountDisplay() {
         </div>
       `).join('');
 
+//       const previewCards = products.slice(0, 6).map(({ name, image, description }) => `
+//   <div class="card">
+//     <img src="${image}" alt="${name}">
+//     <p class="product-name">${name}</p>
+//     <p class="product-description">${description || "No description added"}</p>
+//     <button class="add-to-cart-btn">Add to Cart</button>
+//   </div>
+// `).join('');
+
       const categoryHTML = `
         <div class="product-category">
           <div class="section-header category-name-header">
@@ -206,7 +210,17 @@ function attachCartListeners() {
   buttons.forEach(btn => {
     const card = btn.closest('.card');
     const name = card.querySelector('.product-name').textContent;
-    const image = card.querySelector('img').src;
+
+    // ✅ Find full product details from categories
+    let foundProduct = null;
+    for (const category of categories) {
+      foundProduct = category.products.find(p => p.name === name);
+      if (foundProduct) break;
+    }
+
+    if (!foundProduct) return;
+
+    const { image, description } = foundProduct;
 
     // Set button state based on cart
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -231,15 +245,20 @@ function attachCartListeners() {
         btn.textContent = "Add to Cart";
         btn.classList.remove("in-cart");
       } else {
-        // Add to cart
-        cartItems.push({ name, image });
+        // ✅ Add full product with description
+        cartItems.push({
+          name,
+          image,
+          description: description || "No description available"
+        });
+
         btn.textContent = "In Cart";
         btn.classList.add("in-cart");
         btn.classList.add("show-tooltip");
 
-setTimeout(() => {
-  btn.classList.remove("show-tooltip");
-}, 3000);
+        setTimeout(() => {
+          btn.classList.remove("show-tooltip");
+        }, 3000);
       }
 
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
