@@ -22,6 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set for active filters
   const activeFilters = new Set();
 
+function updateCartCountDisplay() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.querySelectorAll(".cart-count").forEach(el => {
+    el.textContent = cart.length;
+  });
+}
 
   // --- FILTER DROPDOWN ---
   function toggleFilterDropdown(forceClose = false) {
@@ -193,6 +199,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Global click listener for all "Add to Cart" buttons
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".add-to-cart-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".card");
+  const name = card.querySelector(".product-name")?.textContent?.trim();
+  const image = card.querySelector("img")?.src;
+
+  if (!name || !image) return;
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Prevent duplicate entries
+  const exists = cart.find(item => item.name === name);
+  if (exists) {
+    alert("This product is already in your cart.");
+    return;
+  }
+
+  cart.push({ name, image });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCountDisplay();
+
+  btn.textContent = "Added ✓";
+  btn.disabled = true;
+});
+
   // --- LAYOUT ADJUSTMENT FUNCTION ---
   function adjustProductLayout(wrapper) {
     const scrollContainer = wrapper.querySelector(".products-card");
@@ -310,6 +344,7 @@ searchInput.addEventListener('input', () => {
     // --- INITIAL RENDERS ---
   renderCategories();
   renderSlidePages();
+  updateCartCountDisplay();
 
   // --- RESIZE HANDLER ---
   window.addEventListener("resize", () => {
