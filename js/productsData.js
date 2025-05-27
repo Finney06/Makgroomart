@@ -32,8 +32,8 @@ const categories = [
     category: "Flour",
     id: "flourPage",
     products: [
-      { name: "Yam Flour", image: "./assets/images/yam-flour.jpg", description: "Smooth flour for instant pounded yam." },
-      { name: "Cassava Flour", image: "./assets/images/cassava-flour.jpg", description: "Gluten-free flour from cassava." },
+      { name: "Yam Flour", image: "./assets/images/product-images/yam-flour.jpg", description: "Smooth flour for instant pounded yam." },
+      { name: "Cassava Flour", image: "./assets/images/product-images/cassava-flour.jpg", description: "Gluten-free flour from cassava." },
       { name: "Plantain Flour", image: "./assets/images/plantain-flour.jpg", description: "Nutritious and low-carb flour option." },
       { name: "Wheat Flour", image: "./assets/images/wheat-flour.jpg", description: "All-purpose flour for baking and cooking." },
       { name: "Corn Flour", image: "./assets/images/corn-flour.jpg", description: "Fine yellow flour for pap and more." }
