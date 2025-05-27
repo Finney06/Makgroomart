@@ -98,8 +98,16 @@ checkoutSummary.innerHTML = cart
 });
 
 
-document.querySelector(".whatsapp-btn-modern").addEventListener("click", () => {
-  if (cart.length === 0) return;
+const checkoutForm = document.getElementById("checkoutForm");
+
+checkoutForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent form from reloading the page
+
+  // Check if the form is valid
+  if (!checkoutForm.checkValidity()) {
+    checkoutForm.reportValidity();
+    return;
+  }
 
   const name = document.getElementById("userName").value.trim();
   const delivery = document.getElementById("deliveryOption").value.trim();
@@ -109,7 +117,7 @@ document.querySelector(".whatsapp-btn-modern").addEventListener("click", () => {
     .join("\n");
 
   const message = `🛒 Hello! I'd like to place an order from your website.\n
-👤 Name: ${name || "Not provided"}\n🚚 Delivery Preference: ${delivery || "Not selected"}\n
+👤 Name: ${name}\n🚚 Delivery Preference: ${delivery}\n
 Here are the items I’m ordering:
 -------------------------------------
 ${productList}
@@ -123,6 +131,7 @@ Thank you!`;
   window.open(url, "_blank");
   checkoutPanel.classList.remove("active");
 });
+
 
 
 

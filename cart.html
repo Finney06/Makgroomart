@@ -100,21 +100,23 @@
     Please review your selected items below. When you're ready, place your order via WhatsApp.
   </p>
 
+<form id="checkoutForm">
   <div class="checkout-user-info">
-  <input type="text" id="userName" placeholder="Your name" required/>
-  <select id="deliveryOption">
-    <option value="">Select Delivery Preference</option>
-    <option value="Pickup at Store">Pickup</option>
-    <option value="Doorstep Delivery">Doorstep Delivery</option>
-  </select>
-</div>
+    <input type="text" id="userName" name="userName" placeholder="Your name" required />
+    <select id="deliveryOption" name="deliveryOption" required>
+      <option value="">Select Delivery Preference</option>
+      <option value="Pickup at Store">Pickup</option>
+      <option value="Doorstep Delivery">Doorstep Delivery</option>
+    </select>
+  </div>
 
   <ul id="checkoutSummary" class="checkout-summary-modern"></ul>
 
-  <button class="whatsapp-btn-modern">
+  <button type="submit" class="whatsapp-btn-modern">
     <i class="fab fa-whatsapp"></i> Place Order via WhatsApp
   </button>
-</div>
+</form>
+
 
 
 </body>

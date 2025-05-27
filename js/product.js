@@ -126,10 +126,11 @@ let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
   function renderCategories() {
     container.innerHTML = '';
     categories.forEach(({ category, id, products }) => {
-      const previewCards = products.slice(0, 6).map(({ name, image }) => `
+      const previewCards = products.slice(0, 6).map(({ name, image, description }) => `
         <div class="card">
           <img src="${image}" alt="${name}">
           <p class="product-name">${name}</p>
+          <p class="product-description">${description || "No description added"}</p>
           <button class="add-to-cart-btn">Add to Cart</button>
         </div>
       `).join('');
@@ -181,7 +182,7 @@ let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
       slidePage.innerHTML = `
         <div class="slide-header">
-          <button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button>
+         <a href=""><button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button></a> 
           <h2 class="slide-title">${category}</h2>
           <div class="cart-wrapper">
             <a href="cart.html" class="cart-link">
@@ -361,18 +362,22 @@ searchInput.addEventListener('input', () => {
         </div>
       `;
 
-      container.insertAdjacentHTML('beforeend', categoryHTML);
+container.insertAdjacentHTML('beforeend', categoryHTML);
+attachCartListeners();
+
     }
   });
 
   noResultsMessage.style.display = anyMatch ? 'none' : 'block';
 
-  if (!query) {
-    renderCategories();
-    renderSlidePages();
-    filterProductCategories();
-    noResultsMessage.style.display = 'none';
-  }
+if (!query) {
+  renderCategories();
+  renderSlidePages();
+  filterProductCategories();
+  attachCartListeners();
+  noResultsMessage.style.display = 'none';
+}
+
 });
 
   // --- SLIDE PAGE NAVIGATION ---
