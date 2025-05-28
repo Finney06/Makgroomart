@@ -69,3 +69,12 @@ function moveSlider(direction) {
     }
   }, { once: true }) // Remove the event listener after it's triggered once
 }
+
+  function updateCartCount() {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    document.querySelectorAll(".cart-count").forEach(badge => {
+      badge.textContent = cartItems.length;
+    });
+  }
+
+  updateCartCount()

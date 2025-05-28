@@ -487,3 +487,11 @@ header {
     padding: 5px 10px;
   }
 }
+
+.cart-item .item-quantity {
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+  font-weight: bold;
+  margin-top: 0.4rem;
+  color: var(--green);
+}
+

@@ -625,3 +625,78 @@ header {
     width: 60%;
   }
 }
+
+
+.qty-wrapper.hidden {
+  display: none;
+}
+.qty-wrapper {
+  margin: 0.6rem 0;
+}
+
+.product-options {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.unit-selector,
+.quantity-selector {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.unit-selector select,
+.quantity-input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 0.2rem;
+}
+
+.qty-btn {
+  background-color: var(--green);
+  color: white;
+  padding: 0.4rem 0.7rem;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.qty-btn:hover {
+  background-color: var(--filter-button-color-hover);
+}
+
+.qty-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.quantity-input {
+  text-align: center;
+  width: 50px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.card.highlight {
+  outline: 3px solid var(--green);
+  box-shadow: 0 0 12px var(--green);
+  transition: outline 0.3s ease, box-shadow 0.3s ease;
+}
