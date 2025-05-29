@@ -436,14 +436,14 @@ unitSelect?.addEventListener("change", () => {
     container.innerHTML = '';
     let anyMatch = false;
 
-    categories.forEach(({ category, id, products }) => {
+    categories.forEach(({ category, products }) => {
       const matchingProducts = products.filter(product =>
         product.name.toLowerCase().includes(query)
       );
 
       if (matchingProducts.length > 0) {
         anyMatch = true;
-      const productCards = matchingProducts.slice(0, 6).map(({ name, image, quantityTypes }) => `
+      const productCards = matchingProducts.map(({ name, image, quantityTypes }) => `
  <div class="card">
     <img src="${image}" alt="${name}">
     <p class="product-name">${name}</p>
@@ -484,11 +484,9 @@ unitSelect?.addEventListener("change", () => {
       `;
 
         container.insertAdjacentHTML('beforeend', categoryHTML);
-        attachCartListeners();
-
       }
     });
-
+ attachCartListeners();
     noResultsMessage.style.display = anyMatch ? 'none' : 'block';
 
     if (!query) {
