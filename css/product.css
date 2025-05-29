@@ -630,6 +630,7 @@ header {
 .qty-wrapper.hidden {
   display: none;
 }
+
 .qty-wrapper {
   margin: 0.6rem 0;
 }
@@ -647,7 +648,7 @@ header {
 .quantity-selector {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
+  font-size: 1.44rem;
 }
 
 .unit-selector select,
@@ -655,7 +656,7 @@ header {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 1.6rem;
   margin-top: 0.2rem;
 }
 
@@ -673,7 +674,7 @@ header {
   color: white;
   padding: 0.4rem 0.7rem;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.76rem;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -691,7 +692,7 @@ header {
   text-align: center;
   width: 50px;
   border: none;
-  font-size: 1rem;
+  font-size: 1.6rem;
   outline: none;
 }
 
