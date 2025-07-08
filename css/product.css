@@ -27,6 +27,13 @@ body {
   background: var(--body-background);
 }
 
+/* Prevent background scroll when slide-page is open */
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
 header {
   background: var(--header-background);
 }
@@ -380,7 +387,7 @@ header {
   top: 0;
   left: 100%; /* start off-screen */
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   z-index: 2000;
   overflow-y: auto;
   transition: left 0.4s ease;

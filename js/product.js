@@ -499,19 +499,22 @@ unitSelect?.addEventListener("change", () => {
 
   });
 
-  // --- SLIDE PAGE NAVIGATION ---
-  document.addEventListener('click', e => {
+// --- SLIDE PAGE NAVIGATION ---
+document.addEventListener('click', e => {
     const seeMoreBtn = e.target.closest('.see-more-btn');
     if (seeMoreBtn) {
-      e.preventDefault();
-      const targetId = seeMoreBtn.dataset.target;
-      document.getElementById(targetId)?.classList.add('active');
+        e.preventDefault();
+        const targetId = seeMoreBtn.dataset.target;
+        document.getElementById(targetId)?.classList.add('active');
+        document.body.classList.add('no-scroll');  // 👉 Add this line
     }
 
     if (e.target.closest('.back-to-products')) {
-      e.target.closest('.slide-page')?.classList.remove('active');
+        e.target.closest('.slide-page')?.classList.remove('active');
+        document.body.classList.remove('no-scroll');  // 👉 Add this line
     }
-  });
+});
+
 
   // --- INITIAL RENDERS ---
   renderCategories();
