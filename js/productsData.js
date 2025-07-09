@@ -108,7 +108,6 @@ const categories = [
       { name: "Cashew Nuts(processed)", image: "./assets/images/product-images/Cashew.jpg", description: "Roasted cashews ready to eat." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Cashew Nuts(Raw)", image: "./assets/images/product-images/Cashew-raw.jpg", description: "Unprocessed nuts for trade or roasting." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Cashew shells", image: "./assets/images/product-images/Cashew shells.jpg", description: "Shells for oil extraction or fuel." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Sorghum", image: "./assets/images/sorghum.jpg", description: "Versatile grain for flour or brewing." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Ginger", image: "./assets/images/ginger.jpg", description: "Fresh root with strong aroma." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Hibiscus", image: "./assets/images/product-images/Hibiscus.jpg", description: "Dry petals for tea and export." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Garlic", image: "./assets/images/garlic.jpg", description: "Strong aromatic bulb for cooking." , quantityTypes: ["Bag", "Tonne"]},

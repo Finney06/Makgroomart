@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       const categoryHTML = `
-        <div class="product-category">
+        <div class="product-category" id="${category.toLowerCase().replace(/\s+/g, '-')}">
           <div class="section-header category-name-header">
             <h2>${category.toUpperCase()}</h2>
             <a href="#" class="see-more-btn" data-target="${id}">See More</a>
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slidePage.className = "slide-page";
       slidePage.id = id;
 
-      const productCards = products.slice(0, 6).map(({ name, image, quantityTypes }) => `
+      const productCards = products.map(({ name, image, quantityTypes }) => `
 <div class="card">
     <img src="${image}" alt="${name}">
     <p class="product-name">${name}</p>
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       slidePage.innerHTML = `
         <div class="slide-header">
-         <a href=""><button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button></a> 
+         <button class="back-to-products" title="Back"><i class="fas fa-arrow-left"></i></button> 
           <h2 class="slide-title">${category}</h2>
           <div class="cart-wrapper">
             <a href="cart.html" class="cart-link">
