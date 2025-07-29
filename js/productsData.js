@@ -34,8 +34,8 @@ const categories = [
     products: [
       { name: "Yam Flour", image: "./assets/images/product-images/yam-flour.jpg", description: "Smooth flour for instant pounded yam." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Cassava Flour", image: "./assets/images/product-images/cassava-flour.jpg", description: "Gluten-free flour from cassava." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Plantain Flour", image: "./assets/images/product-images/plantain-flour.jpg", description: "Nutritious and low-carb flour option." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Wheat Flour", image: "./assets/images/product-images/wheat-flour.jpg", description: "All-purpose flour for baking and cooking." , quantityTypes: ["Bag", "Tonne"]},
+      { name: "Plantain Flour", image: "./assets/images/product-images/plantain-flour.jpeg", description: "Nutritious and low-carb flour option." , quantityTypes: ["Bag", "Tonne"]},
+      { name: "Wheat Flour", image: "./assets/images/product-images/wheat-flour.jpeg", description: "All-purpose flour for baking and cooking." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Corn Flour", image: "./assets/images/product-images/corn-flour.jpeg", description: "Fine yellow flour for pap and more." , quantityTypes: ["Bag", "Tonne"]}
     ]
   },
@@ -43,11 +43,11 @@ const categories = [
     category: "Oil",
     id: "oilPage",
     products: [
-      { name: "Palm Oil", image: "./assets/images/product-images/palm-oil.jpg", description: "Rich red oil, great for stews and soups." , quantityTypes: ["Litre"]},
+      { name: "Palm Oil", image: "./assets/images/product-images/palm-oil.jpeg", description: "Rich red oil, great for stews and soups." , quantityTypes: ["Litre"]},
       { name: "Soya Oil", image: "./assets/images/product-images/soya-oil.jpg", description: "Light and heart-healthy cooking oil." , quantityTypes: ["Litre"]},
-      { name: "Sunflower Oil", image: "./assets/images/product-images/sunflower-oil.jpg", description: "Mild-flavored oil rich in vitamin E." , quantityTypes: ["Litre"]},
+      { name: "Sunflower Oil", image: "./assets/images/product-images/sunflower-oil.jpeg", description: "Mild-flavored oil rich in vitamin E." , quantityTypes: ["Litre"]},
       { name: "Coconut Oil", image: "./assets/images/product-images/coconut-oil.jpeg", description: "Fragrant oil ideal for frying and skin care." , quantityTypes: ["Litre"]},
-      { name: "Groundnut Oil", image: "./assets/images/product-images/groundnut-oil.jpg", description: "Tasty oil for deep frying and cooking." , quantityTypes: ["Litre"]}
+      { name: "Groundnut Oil", image: "./assets/images/product-images/groundnut-oil.jpeg", description: "Tasty oil for deep frying and cooking." , quantityTypes: ["Litre"]}
     ]
   },
   {
@@ -68,8 +68,8 @@ const categories = [
       { name: "Goat", image: "./assets/images/product-images/Goat.jpg", description: "Tasty and tender goat meat." , quantityTypes: ["Quantity"]},
       { name: "Ram", image: "./assets/images/product-images/ram.jpg", description: "Ideal for festive feasts." , quantityTypes: ["Quantity"]},
       { name: "Pig", image: "./assets/images/product-images/pig.jpg", description: "Quality pork for various dishes." , quantityTypes: ["Quantity"]},
-      { name: "Snails", image: "./assets/images/product-images/snails.jpg", description: "Nutritious and delicious mollusks." , quantityTypes: ["Quantity"]},
-      { name: "Rabbits", image: "./assets/images/product-images/rabbits.jpg", description: "Lean meat option, rich in protein." , quantityTypes: ["Quantity"]},
+      { name: "Snails", image: "./assets/images/product-images/snail.jpg", description: "Nutritious and delicious mollusks." , quantityTypes: ["Quantity"]},
+      { name: "Rabbits", image: "./assets/images/product-images/rabbit.jpg", description: "Lean meat option, rich in protein." , quantityTypes: ["Quantity"]},
       { name: "Grass cutter", image: "./assets/images/product-images/grass-cutter.jpg", description: "Flavorful bush meat delicacy." , quantityTypes: ["Quantity"]},
       { name: "Chicken", image: "./assets/images/product-images/chicken.jpg", description: "Farm-raised chicken for all meals." , quantityTypes: ["Quantity"]},
       { name: "Turkey", image: "./assets/images/product-images/turkey.jpg", description: "Big bird, great for celebrations." , quantityTypes: ["Quantity"]},
@@ -84,13 +84,13 @@ const categories = [
       { name: "Banana Sucker", image: "./assets/images/product-images/banana-sucker.jpg", description: "Healthy shoot for banana farming." , quantityTypes: ["Quantity"]},
       { name: "Plantain Sucker", image: "./assets/images/product-images/plantain-sucker.jpg", description: "Reliable sprout for plantain growth." , quantityTypes: ["Quantity"]},
       { name: "Cocoa Seedling", image: "./assets/images/product-images/Cocoa-Seedlings.jpg", description: "High-yield cocoa tree seedling." , quantityTypes: ["Quantity"]},
-      { name: "Oil Palm Seedling", image: "./assets/images/product-images/oil-palm-seedling.jpg", description: "For sustainable palm oil production." , quantityTypes: ["Quantity"]},
+      { name: "Oil Palm Seedling", image: "./assets/images/product-images/oil-palm-seedlings.jpg", description: "For sustainable palm oil production." , quantityTypes: ["Quantity"]},
       { name: "Citrus Seedling", image: "./assets/images/product-images/citrus-seedlings.jpg", description: "Sweet orange or lemon tree starter." , quantityTypes: ["Quantity"]},
       { name: "Cashew Seedling", image: "./assets/images/product-images/cashew-seedlings.jpg", description: "Grow your own cashew trees." , quantityTypes: ["Quantity"]},
       { name: "Coconut Seedling", image: "./assets/images/product-images/coconut-seedlings.jpg", description: "Hardy coconut tree starter." , quantityTypes: ["Quantity"]},
-      { name: "Tomato Seed", image: "./assets/images/product-images/tomato-seed.jpg", description: "Quality seeds for juicy tomatoes." , quantityTypes: ["Quantity"]},
-      { name: "Pepper Seed", image: "./assets/images/product-images/pepper-seed.jpg", description: "Vibrant seeds for hot pepper crops." , quantityTypes: ["Quantity"]},
-      { name: "Onion Seed", image: "./assets/images/product-images/onion-seed.jpg", description: "High-germination onion seeds." , quantityTypes: ["Quantity"]},
+      { name: "Tomato Seed", image: "./assets/images/product-images/tomato-seeds.jpg", description: "Quality seeds for juicy tomatoes." , quantityTypes: ["Quantity"]},
+      { name: "Pepper Seed", image: "./assets/images/product-images/pepper-seeds.jpg", description: "Vibrant seeds for hot pepper crops." , quantityTypes: ["Quantity"]},
+      { name: "Onion Seed", image: "./assets/images/product-images/onion-seeds.jpg", description: "High-germination onion seeds." , quantityTypes: ["Quantity"]},
       { name: "Okro Seed", image: "./assets/images/product-images/okro-seed.jpg", description: "Fast-growing okro variety." , quantityTypes: ["Quantity"]},
       { name: "Cucumber Seed", image: "./assets/images/product-images/cucumber-seed.jpg", description: "Seeds for crisp, juicy cucumbers." , quantityTypes: ["Quantity"]},
       { name: "Maize Seed", image: "./assets/images/product-images/maize-seed.jpg", description: "Hybrid maize seeds for high yield." , quantityTypes: ["Quantity"]},
@@ -113,7 +113,7 @@ const categories = [
       { name: "Garlic", image: "./assets/images/product-images/garlic.jpg", description: "Strong aromatic bulb for cooking." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Sesame", image: "./assets/images/product-images/sesame.jpg", description: "Seeds used for oil or snack topping." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Sunflower", image: "./assets/images/product-images/sunflower-seeds-537652_640.jpg", description: "High-oil seed for processing." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Soyabeans", image: "./assets/images/product-images/soyabeans.jpg", description: "Protein-rich seed for food and feed." , quantityTypes: ["Bag", "Tonne"]},
+      { name: "Soyabeans", image: "./assets/images/product-images/soyabean.jpg", description: "Protein-rich seed for food and feed." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Cotton", image: "./assets/images/product-images/cotton.jpg", description: "Raw fiber for textiles and lint." , quantityTypes: ["Bag", "Tonne"]},
       { name: "Palm Kernel", image: "./assets/images/product-images/palm-kernel.jpg", description: "Nut used for palm kernel oil." , quantityTypes: ["Bag", "Tonne"]}
     ]
@@ -162,7 +162,7 @@ const categories = [
     products: [
       { name: "Dried Fish", image: "./assets/images/product-images/dried-fish.jpg", description: "Traditional sun-dried protein." , quantityTypes: ["Carton", "Kg"]},
       { name: "Ogbono", image: "./assets/images/product-images/ogbono.jpg", description: "Seeds for making draw soup." , quantityTypes: ["Paint"]},
-      { name: "Kilishi", image: "./assets/images/product-images/kilishi.jpg", description: "Spicy dried beef snack." , quantityTypes: ["Pack"]},
+      { name: "Kilishi", image: "./assets/images/product-images/killishi.jpg", description: "Spicy dried beef snack." , quantityTypes: ["Pack"]},
       { name: "Parrot", image: "./assets/images/product-images/parrot.jpg", description: "Colorful talking bird pet." , quantityTypes: ["Quantity"]},
       { name: "Ostrich", image: "./assets/images/product-images/ostrich.jpg", description: "Large bird for meat and feathers." , quantityTypes: ["Quantity"]},
       { name: "Pomo", image: "./assets/images/product-images/pomo.jpg", description: "Cow skin delicacy for soups." , quantityTypes: ["Kg"]},
