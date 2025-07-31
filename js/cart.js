@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="item-details">
                 <h3>
-  <a href="product.html#${item.slug}" class="product-link">${item.name}</a>
+  <a href="Product.html#${item.slug}" class="product-link">${item.name}</a>
 </h3>
 
 
@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const name = document.getElementById("userName").value.trim();
+     const email = document.getElementById("userEmail").value.trim();
     const delivery = document.getElementById("deliveryOption").value.trim();
 
     const productList = cart
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("\n");
 
     const message = `🛒 Hello! I'd like to place an order from your website.\n
-👤 Name: ${name}\n🚚 Delivery Preference: ${delivery}\n
+👤 Name: ${name}\n 📧 Email: ${email}\n 🚚 Delivery Preference: ${delivery}\n
 Here are the items I’m ordering:
 -------------------------------------
 ${productList}
