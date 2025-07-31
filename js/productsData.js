@@ -43,11 +43,11 @@ const categories = [
     category: "Oil",
     id: "oilPage",
     products: [
-      { name: "Palm Oil", image: "./assets/images/product-images/Palm-oil.jpeg", description: "Rich red oil, great for stews and soups." , quantityTypes: ["Litre"]},
+      { name: "Palm Oil", image: "./assets/images/product-images/Palm-oil.jpg", description: "Rich red oil, great for stews and soups." , quantityTypes: ["Litre"]},
       { name: "Soya Oil", image: "./assets/images/product-images/soya-oil.jpg", description: "Light and heart-healthy cooking oil." , quantityTypes: ["Litre"]},
       { name: "Sunflower Oil", image: "./assets/images/product-images/Sunflower-oil.jpeg", description: "Mild-flavored oil rich in vitamin E." , quantityTypes: ["Litre"]},
       { name: "Coconut Oil", image: "./assets/images/product-images/Coconut-oil.jpeg", description: "Fragrant oil ideal for frying and skin care." , quantityTypes: ["Litre"]},
-      { name: "Groundnut Oil", image: "./assets/images/product-images/Groundnut-oil.jpeg", description: "Tasty oil for deep frying and cooking." , quantityTypes: ["Litre"]}
+      { name: "Groundnut Oil", image: "./assets/images/product-images/Groundnut-oil.jpg", description: "Tasty oil for deep frying and cooking." , quantityTypes: ["Litre"]}
     ]
   },
   {
@@ -91,7 +91,7 @@ const categories = [
       { name: "Tomato Seed", image: "./assets/images/product-images/tomato-seeds.jpg", description: "Quality seeds for juicy tomatoes." , quantityTypes: ["Quantity"]},
       { name: "Pepper Seed", image: "./assets/images/product-images/pepper-seeds.jpg", description: "Vibrant seeds for hot pepper crops." , quantityTypes: ["Quantity"]},
       { name: "Onion Seed", image: "./assets/images/product-images/onion-seeds.jpg", description: "High-germination onion seeds." , quantityTypes: ["Quantity"]},
-      { name: "Okro Seed", image: "./assets/images/product-images/okro-seed.jpg", description: "Fast-growing okro variety." , quantityTypes: ["Quantity"]},
+      { name: "Okro Seed", image: "./assets/images/product-images/okro-seeds.jpg", description: "Fast-growing okro variety." , quantityTypes: ["Quantity"]},
       { name: "Cucumber Seed", image: "./assets/images/product-images/cucumber-seed.jpg", description: "Seeds for crisp, juicy cucumbers." , quantityTypes: ["Quantity"]},
       { name: "Maize Seed", image: "./assets/images/product-images/maize-seed.jpg", description: "Hybrid maize seeds for high yield." , quantityTypes: ["Quantity"]},
       { name: "Dongoyaro Seeds", image: "./assets/images/product-images/dongoyaro-seed.jpg", description: "Neem tree seeds for natural remedy." , quantityTypes: ["Quantity"]},
@@ -131,7 +131,7 @@ const categories = [
     category: "Feeds",
     id: "feedsPage",
     products: [
-      { name: "Poultry Feeds", image: "assets/images/product-images/feeds2.jpg", description: "Balanced feed for chickens." , quantityTypes: ["Kg", "Bag", "Tonne"]},
+      { name: "Poultry Feeds", image: "assets/images/feeds2.jpg", description: "Balanced feed for chickens." , quantityTypes: ["Kg", "Bag", "Tonne"]},
       { name: "Fish Feeds", image: "./assets/images/product-images/fish-feeds.jpg", description: "Pellets for healthy fish growth." , quantityTypes: ["Kg", "Bag", "Tonne"]},
       { name: "Rabbit Feeds", image: "./assets/images/product-images/rabbit-feeds.jpg", description: "Custom feed mix for rabbits." , quantityTypes: ["Kg", "Bag", "Tonne"]},
       { name: "Pig Feeds", image: "./assets/images/product-images/pig-feeds.jpg", description: "Nutrient-rich swine feed." , quantityTypes: ["Kg", "Bag", "Tonne"]}
