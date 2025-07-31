@@ -33,21 +33,21 @@ const categories = [
     id: "flourPage",
     products: [
       { name: "Yam Flour", image: "./assets/images/product-images/yam-flour.jpg", description: "Smooth flour for instant pounded yam." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Cassava Flour", image: "./assets/images/product-images/cassava-flour.jpg", description: "Gluten-free flour from cassava." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Plantain Flour", image: "./assets/images/product-images/plantain-flour.jpeg", description: "Nutritious and low-carb flour option." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Wheat Flour", image: "./assets/images/product-images/wheat-flour.jpeg", description: "All-purpose flour for baking and cooking." , quantityTypes: ["Bag", "Tonne"]},
-      { name: "Corn Flour", image: "./assets/images/product-images/corn-flour.jpeg", description: "Fine yellow flour for pap and more." , quantityTypes: ["Bag", "Tonne"]}
+      { name: "Cassava Flour", image: "./assets/images/product-images/Cassava-Flour.jpg", description: "Gluten-free flour from cassava." , quantityTypes: ["Bag", "Tonne"]},
+      { name: "Plantain Flour", image: "./assets/images/product-images/Plantain-flour.jpeg", description: "Nutritious and low-carb flour option." , quantityTypes: ["Bag", "Tonne"]},
+      { name: "Wheat Flour", image: "./assets/images/product-images/Wheat-flour.jpeg", description: "All-purpose flour for baking and cooking." , quantityTypes: ["Bag", "Tonne"]},
+      { name: "Corn Flour", image: "./assets/images/product-images/Corn-flour.jpeg", description: "Fine yellow flour for pap and more." , quantityTypes: ["Bag", "Tonne"]}
     ]
   },
   {
     category: "Oil",
     id: "oilPage",
     products: [
-      { name: "Palm Oil", image: "./assets/images/product-images/palm-oil.jpeg", description: "Rich red oil, great for stews and soups." , quantityTypes: ["Litre"]},
+      { name: "Palm Oil", image: "./assets/images/product-images/Palm-oil.jpeg", description: "Rich red oil, great for stews and soups." , quantityTypes: ["Litre"]},
       { name: "Soya Oil", image: "./assets/images/product-images/soya-oil.jpg", description: "Light and heart-healthy cooking oil." , quantityTypes: ["Litre"]},
-      { name: "Sunflower Oil", image: "./assets/images/product-images/sunflower-oil.jpeg", description: "Mild-flavored oil rich in vitamin E." , quantityTypes: ["Litre"]},
-      { name: "Coconut Oil", image: "./assets/images/product-images/coconut-oil.jpeg", description: "Fragrant oil ideal for frying and skin care." , quantityTypes: ["Litre"]},
-      { name: "Groundnut Oil", image: "./assets/images/product-images/groundnut-oil.jpeg", description: "Tasty oil for deep frying and cooking." , quantityTypes: ["Litre"]}
+      { name: "Sunflower Oil", image: "./assets/images/product-images/Sunflower-oil.jpeg", description: "Mild-flavored oil rich in vitamin E." , quantityTypes: ["Litre"]},
+      { name: "Coconut Oil", image: "./assets/images/product-images/Coconut-oil.jpeg", description: "Fragrant oil ideal for frying and skin care." , quantityTypes: ["Litre"]},
+      { name: "Groundnut Oil", image: "./assets/images/product-images/Groundnut-oil.jpeg", description: "Tasty oil for deep frying and cooking." , quantityTypes: ["Litre"]}
     ]
   },
   {
@@ -64,9 +64,9 @@ const categories = [
     category: "Animal Farm",
     id: "animalFarmPage",
     products: [
-      { name: "Cow", image: "./assets/images/product-images/cow.jpg", description: "Freshly sourced beef cattle." , quantityTypes: ["Quantity"]},
+      { name: "Cow", image: "./assets/images/product-images/Cow.jpg", description: "Freshly sourced beef cattle." , quantityTypes: ["Quantity"]},
       { name: "Goat", image: "./assets/images/product-images/Goat.jpg", description: "Tasty and tender goat meat." , quantityTypes: ["Quantity"]},
-      { name: "Ram", image: "./assets/images/product-images/ram.jpg", description: "Ideal for festive feasts." , quantityTypes: ["Quantity"]},
+      { name: "Ram", image: "./assets/images/product-images/Ram.jpg", description: "Ideal for festive feasts." , quantityTypes: ["Quantity"]},
       { name: "Pig", image: "./assets/images/product-images/pig.jpg", description: "Quality pork for various dishes." , quantityTypes: ["Quantity"]},
       { name: "Snails", image: "./assets/images/product-images/snail.jpg", description: "Nutritious and delicious mollusks." , quantityTypes: ["Quantity"]},
       { name: "Rabbits", image: "./assets/images/product-images/rabbit.jpg", description: "Lean meat option, rich in protein." , quantityTypes: ["Quantity"]},
@@ -82,7 +82,7 @@ const categories = [
     products: [
       { name: "Pineapple Sucker", image: "./assets/images/product-images/pineapple-sucker.jpg", description: "Starter plant for growing pineapples." , quantityTypes: ["Quantity"]},
       { name: "Banana Sucker", image: "./assets/images/product-images/banana-sucker.jpg", description: "Healthy shoot for banana farming." , quantityTypes: ["Quantity"]},
-      { name: "Plantain Sucker", image: "./assets/images/product-images/plantain-sucker.jpg", description: "Reliable sprout for plantain growth." , quantityTypes: ["Quantity"]},
+      { name: "Plantain Sucker", image: "./assets/images/product-images/Plantain-sucker.jpg", description: "Reliable sprout for plantain growth." , quantityTypes: ["Quantity"]},
       { name: "Cocoa Seedling", image: "./assets/images/product-images/Cocoa-Seedlings.jpg", description: "High-yield cocoa tree seedling." , quantityTypes: ["Quantity"]},
       { name: "Oil Palm Seedling", image: "./assets/images/product-images/oil-palm-seedlings.jpg", description: "For sustainable palm oil production." , quantityTypes: ["Quantity"]},
       { name: "Citrus Seedling", image: "./assets/images/product-images/citrus-seedlings.jpg", description: "Sweet orange or lemon tree starter." , quantityTypes: ["Quantity"]},
