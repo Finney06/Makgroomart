@@ -141,9 +141,9 @@ const categories = [
     category: "Fertilizers",
     id: "fertilizersPage",
     products: [
-      { name: "Organic Soil", image: "./assets/images/product-images/organic-soil.jpg", description: "Enriched compost for better growth." , quantityTypes: ["Litre"]},
-      { name: "Organic Foliar", image: "./assets/images/product-images/organic-foliar.jpg", description: "Spray-on fertilizer for fast action." , quantityTypes: ["Litre"]},
-      { name: "Inorganic", image: "./assets/images/product-images/inorganic-fertilizer.jpg", description: "Commercial fertilizer for quick boost." , quantityTypes: ["Litre"]}
+      { name: "Organic Soil", image: "./assets/images/product-images/organic.jpg", description: "Enriched compost for better growth." , quantityTypes: ["Litre"]},
+      { name: "Organic Foliar", image: "./assets/images/product-images/foliar.jpg", description: "Spray-on fertilizer for fast action." , quantityTypes: ["Litre"]},
+      { name: "Inorganic", image: "./assets/images/product-images/inoranic.jpg", description: "Commercial fertilizer for quick boost." , quantityTypes: ["Litre"]}
     ]
   },
   {

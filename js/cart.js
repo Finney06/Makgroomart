@@ -108,29 +108,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const checkoutForm = document.getElementById("checkoutForm");
 
-  checkoutForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form from reloading the page
+checkoutForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent form from reloading the page
 
-    // Check if the form is valid
-    if (!checkoutForm.checkValidity()) {
-      checkoutForm.reportValidity();
-      return;
-    }
+  if (!checkoutForm.checkValidity()) {
+    checkoutForm.reportValidity();
+    return;
+  }
 
-    const name = document.getElementById("userName").value.trim();
-     const email = document.getElementById("userEmail").value.trim();
-    const delivery = document.getElementById("deliveryOption").value.trim();
+  const name = document.getElementById("userName").value.trim();
+  const email = document.getElementById("userEmail").value.trim();
+  const delivery = document.getElementById("deliveryOption").value.trim();
 
-    const productList = cart
-      .map((item, i) => {
-        const qty = item.quantityValue || 1;
-        const unit = item.quantityType || "Unit";
-        return `${i + 1}. ${item.name} — ${qty} ${unit}${qty > 1 ? "s" : ""}`;
-      })
-      .join("\n");
+  const productList = cart
+    .map((item, i) => {
+      const qty = item.quantityValue || 1;
+      const unit = item.quantityType || "Unit";
+      return `${i + 1}. ${item.name} — ${qty} ${unit}${qty > 1 ? "s" : ""}`;
+    })
+    .join("\n");
 
-    const message = `🛒 Hello! I'd like to place an order from your website.\n
-👤 Name: ${name}\n 📧 Email: ${email}\n 🚚 Delivery Preference: ${delivery}\n
+  const message = `🛒 Hello! I'd like to place an order from your website.\n
+👤 Name: ${name}\n📧 Email: ${email}\n🚚 Delivery Preference: ${delivery}\n
 Here are the items I’m ordering:
 -------------------------------------
 ${productList}
@@ -139,13 +138,28 @@ ${productList}
 Please provide the total price, payment options, and estimated delivery time.\n
 Thank you!`;
 
-    const businessPhone = "2348125844055";
-    const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(url, "_blank");
-    checkoutPanel.classList.remove("active");
-  });
+  const businessPhone = "2348125844055";
+  const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(message)}`;
+
+  // Open WhatsApp window
+  window.open(url, "_blank");
+
+  // Small delay before clearing cart
+setTimeout(() => {
+  cart = [];
+  localStorage.setItem("cartItems", JSON.stringify(cart));
+  renderCart();
+  updateCartCount();
+
+  // ✅ Show toast instead of alert
+  showToast("✅ Your cart has been cleared after sending your order.");
+}, 3000);
+
+
+  // Close the checkout panel
+  checkoutPanel.classList.remove("active");
+});
+
 
   // Close panel
   closeCheckout.addEventListener("click", () => {
@@ -154,3 +168,23 @@ Thank you!`;
 
   renderCart();
 });
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  const sound = document.getElementById("successSound");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  if (sound) sound.play(); // Play success sound
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+}
+
+
+
+
+
+window.showToast = showToast;
