@@ -144,16 +144,24 @@ Thank you!`;
   // Open WhatsApp window
   window.open(url, "_blank");
 
-  // Small delay before clearing cart
-setTimeout(() => {
-  cart = [];
-  localStorage.setItem("cartItems", JSON.stringify(cart));
-  renderCart();
-  updateCartCount();
+// Delay cart clear until user returns to your tab
+function handleVisibilityChange() {
+  if (document.visibilityState === "visible") {
+    cart = [];
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+    showToast(" Your cart has been cleared after sending your order.");
 
-  // ✅ Show toast instead of alert
-  showToast("✅ Your cart has been cleared after sending your order.");
-}, 3000);
+    // Remove listener after action
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }
+}
+
+document.addEventListener("visibilitychange", handleVisibilityChange);
+
+// Close the checkout panel immediately
+checkoutPanel.classList.remove("active");
 
 
   // Close the checkout panel
@@ -181,10 +189,8 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove("show");
   }, 4000);
+  console.log("Toast is being triggered!");
+
 }
 
 
-
-
-
-window.showToast = showToast;

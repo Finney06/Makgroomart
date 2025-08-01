@@ -7,31 +7,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon.png" />
     <title>Your Cart</title>
 
-<style>
-.toast {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #00704a;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  opacity: 0;
-  pointer-events: none;
-    transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 1000;
-}
-
-.toast.show {
-  opacity: 1;
-   transform: translateY(0);
-  pointer-events: auto;
-}
-
-</style>
-
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css" />
 
@@ -75,6 +50,29 @@
         .scroll-to-top-button.show {
             opacity: 1;
         }
+
+        .toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #00704a;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+    transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+   transform: translateY(0);
+  pointer-events: auto;
+}
+
     </style>
 </head>
 
@@ -142,12 +140,12 @@
     <i class="fab fa-whatsapp"></i> Place Order via WhatsApp
   </button>
 </form>
-
+</div>
 <!-- Toast Notification -->
-<div id="toast" class="toast">✅ Your cart has been cleared after sending your order.</div>
+<div id="toast" class="toast"></div>
 
 <!-- Success sound (optional) -->
-<audio id="successSound" src="assets/sounds/success.mp3" preload="auto"></audio>
+<audio id="successSound" src="assets/sounds/success.wav" preload="auto"></audio>
 
 
 </body>
